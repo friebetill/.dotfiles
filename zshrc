@@ -108,7 +108,6 @@ alias cheatLatex='evince ~/Dropbox/Meine\ Technische\ Informatik/Useful/Latex/Ch
 alias newS='tmux new -s $1'
 alias toS='tmux attach -t $1'
 
-
-
+alias startAgent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/x220t_rsa'
 
 alias rm=trash
