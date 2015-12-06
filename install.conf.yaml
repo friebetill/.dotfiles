@@ -1,13 +1,17 @@
-- clean: ['~']
+- clean: 
+  - "~"
+  - "~/.config/terminator"
+
 
 - link:
-    ~/.config/terminator: config/terminator/
+    ~/.config/terminator: 
+      create: true
+      path: config/terminator/
     ~/.vim: vim/
     ~/.vimrc: vimrc
-
     ~/.zshrc: zshrc
     ~/.zshrc.pre-oh-my-zsh: zshrc.pre-oh-my-zsh
     
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+  - "vim +PluginInstall +qall"
