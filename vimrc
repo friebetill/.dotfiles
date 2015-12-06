@@ -12,6 +12,7 @@ filetype off                  " required
  Plugin 'tpope/vim-fugitive'
  Plugin 'scrooloose/nerdtree'
  Plugin 'SirVer/ultisnips'
+ Plugin 'easymotion/vim-easymotion'
 
  " All of your Plugins must be added before the following line
  call vundle#end()            " required
