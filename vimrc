@@ -1,3 +1,20 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sections:
+"   -> Vundle
+"   -> General
+"   -> User Interface
+"   -> Aesthetics
+"   -> Files, backups and undo
+"   -> Text, tab and indent related
+"   -> Automatic watch for .vimrc changes
+"   -> Mappings and shortcuts
+"   -> Leader shortcuts
+"   -> Plugin settings
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           Vundle                            "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -13,27 +30,15 @@ filetype off                  " required
  Plugin 'scrooloose/nerdtree'
  Plugin 'SirVer/ultisnips'
  Plugin 'easymotion/vim-easymotion'
+ Plugin 'jlanzarotta/bufexplorer'
 
  " All of your Plugins must be added before the following line
  call vundle#end()            " required
  filetype plugin indent on    " required
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sections:
-"   -> General
-"   -> User Interface
-"   -> Aesthetics
-"   -> Files, backups and undo
-"   -> Text, tab and indent related
-"   -> Automatic watch for .vimrc changes
-"   -> Mappings and shortcuts
-"   -> Leader shortcuts
-"   -> Plugin settings
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
+"                           General                           "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Enable filetype plugins
         filetype plugin on              
@@ -79,7 +84,7 @@ filetype off                  " required
         set title                       " change the terminal's title
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => User Interface
+"                        User Interface                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Set 7 lines to the cursor - when moving vertically using j/k
         set so=7
@@ -109,7 +114,7 @@ filetype off                  " required
         set tm=500
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Aesthetics
+"                           Aesthetics                        "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Enable syntax hightlighting
         syntax on
@@ -124,7 +129,7 @@ filetype off                  " required
         set relativenumber
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
+"                   Files, backups and undo                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Turn backup off, since most stuff is in git etc. anyway...
         set nobackup
@@ -132,7 +137,7 @@ filetype off                  " required
         set noswapfile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
+"                Text, tab and indent related                 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     " Use spaces instead of tabs
@@ -153,8 +158,8 @@ filetype off                  " required
         set si      " Smart indent
         set wrap    " Wrap lines
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Automatic watch for .vimrc changes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"           Automatic watch for .vimrc changes                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     augroup myvimrc
         au!
@@ -162,7 +167,7 @@ filetype off                  " required
     augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Mappings and shortcuts
+"                   Mappings and shortcuts                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Control shortcuts
 
