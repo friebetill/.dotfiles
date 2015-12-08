@@ -88,13 +88,14 @@ zle -N prepend-sudo
 bindkey "^[s" prepend-sudo
 # }}}
 
+
 # Aliases
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias eclipse=./Programme/eclipse/eclipse
 alias inet='ssh till@tetris.inet.tu-berlin.de'
-alias toinet='cd ~/git/cloudnet_simulator/Simulator\ Framework/'
+alias toinet='cd ~/repos/cloudnet_simulator/Simulator\ Framework/'
 
 # {{{ Semester aliases
 alias semester='cd ~/Dropbox/Meine\ Technische\ Informatik/5.\ Semester/'

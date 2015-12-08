@@ -31,6 +31,7 @@ filetype off                  " required
  Plugin 'SirVer/ultisnips'
  Plugin 'easymotion/vim-easymotion'
  Plugin 'jlanzarotta/bufexplorer'
+ Plugin 'powerline/powerline'
 
  " All of your Plugins must be added before the following line
  call vundle#end()            " required
