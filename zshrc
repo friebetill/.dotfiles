@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/till/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -69,6 +69,14 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# My own settings
+
+# No output when background job finishs
+setopt no_notify
+
+# Background jobs will still running after shell is closed
+setopt hup
+
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
@@ -95,15 +103,18 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias eclipse=./Programme/eclipse/eclipse
 alias inet='ssh till@tetris.inet.tu-berlin.de'
-alias toinet='cd ~/repos/cloudnet_simulator/Simulator\ Framework/'
+alias toinet='cd ~/repos/cloudnet_simulator/Simulator_Framework/'
+alias paleo='cd ~/Dropbox/Freizeit/Ernaehrung/Paleo/'
+alias lauren='cd ~/Dropbox/Freizeit/Sport/MarkLauren'
+alias freizeit='cd ~/Dropbox/Freizeit'
 
 # {{{ Semester aliases
-alias semester='cd ~/Dropbox/Meine\ Technische\ Informatik/5.\ Semester/'
-alias hwp='cd ~/Dropbox/Meine\ Technische\ Informatik/5.\ Semester/Hardwarepraktikum'
-alias bsp='cd ~/Dropbox/Meine\ Technische\ Informatik/5.\ Semester/Betriebssystempraktikum'
-alias mdt='cd ~/Dropbox/Meine\ Technische\ Informatik/5.\ Semester/Messtechnik'
-alias ki='cd ~/Dropbox/Meine\ Technische\ Informatik/5.\ Semester/Künstliche\ Intelligenz/'
-alias cheatLatex='evince ~/Dropbox/Meine\ Technische\ Informatik/Useful/Latex/Cheatsheets/latexsheet-a4.pdf'
+alias semester='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/'
+alias hwp='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/Hardwarepraktikum'
+alias bsp='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/Betriebssystempraktikum'
+alias mdt='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/Messtechnik'
+alias ki='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/KuenstlicheIntelligenz/'
+alias cheatLatex='evince ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/Cheatsheets/latexsheet-a4.pdf'
 # }}}
 
 alias newS='tmux new -s $1'
@@ -112,3 +123,8 @@ alias toS='tmux attach -t $1'
 alias startAgent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/x220t_rsa'
 
 alias rm=trash
+alias o='xdg-open'
+
+if [[ -r /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
+fi

@@ -12,6 +12,7 @@
 "   -> Plugin settings
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           Vundle                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -29,13 +30,27 @@ filetype off                  " required
  Plugin 'tpope/vim-fugitive'
  Plugin 'scrooloose/nerdtree'
  Plugin 'SirVer/ultisnips'
- Plugin 'easymotion/vim-easymotion'
  Plugin 'jlanzarotta/bufexplorer'
  Plugin 'powerline/powerline'
+"Plugin 'easymotion/vim-easymotion'
 
  " All of your Plugins must be added before the following line
  call vundle#end()            " required
  filetype plugin indent on    " required
+
+" Activate Powerline
+ python from powerline.vim import setup as powerline_setup
+ python powerline_setup()
+ python del powerline_setup
+
+ set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+
+" Always show statusline
+ set laststatus=2
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+ set t_Co=256
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -58,7 +73,6 @@ filetype off                  " required
         set showmode
         set showcmd
         set hidden                      " Hide buffers instead of closing them
-        set nowrap                      " Don't wrap lines
         set visualbell
         set ttyfast
         set backspace=indent,eol,start  " Allow backspacing over everything in insert mode
@@ -126,7 +140,7 @@ filetype off                  " required
     " Set utf8 as standard encoding and en_US as the standard language
         set encoding=utf-8
 
-        set guifont=Menlo:h14
+        set guifont=inconsolata:h12
         set relativenumber
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
