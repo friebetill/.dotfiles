@@ -1,11 +1,13 @@
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
+export TERM="xterm-256color"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+#export PROMPT_DIRTRIM=2
 
 DEFAULT_USER="till"
 
@@ -15,24 +17,8 @@ export EDITOR="vim"
 # why would you type 'cd dir' if you could just type 'dir'?
 setopt AUTO_CD
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -61,7 +47,7 @@ plugins=(git)
 
 # User configuration
 
-  export PATH="/home/till/anaconda/bin:/home/till/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/home/till/anaconda/bin:/home/till/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -70,6 +56,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # My own settings
+setopt vi
 
 # No output when background job finishs
 setopt no_notify
@@ -101,9 +88,9 @@ bindkey "^[s" prepend-sudo
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias eclipse=./Programme/eclipse/eclipse
-alias inet='ssh till@tetris.inet.tu-berlin.de'
-alias toinet='cd ~/repos/cloudnet_simulator/Simulator_Framework/'
+alias eclipse="~/Programme/eclipse/eclipse"
+alias toinet='ssh till@tetris.inet.tu-berlin.de'
+alias inet="cd ~/repos/cloudnet_simulator/Simulator\ Framework/"
 alias paleo='cd ~/Dropbox/Freizeit/Ernaehrung/Paleo/'
 alias lauren='cd ~/Dropbox/Freizeit/Sport/MarkLauren'
 alias freizeit='cd ~/Dropbox/Freizeit'
@@ -113,17 +100,24 @@ alias semester='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/'
 alias hwp='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/Hardwarepraktikum'
 alias bsp='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/Betriebssystempraktikum'
 alias mdt='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/Messtechnik'
-alias ki='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/KuenstlicheIntelligenz/'
-alias cheatLatex='evince ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/Cheatsheets/latexsheet-a4.pdf'
+alias ki='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/KuenstlicheIntelligenz/Probabilistische/'
+alias sem='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/KuenstlicheIntelligenz/Seminar/'
 # }}}
 
+alias cheatLatex='evince ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/Cheatsheets/latexsheet-a4.pdf'
 alias newS='tmux new -s $1'
 alias toS='tmux attach -t $1'
 
+alias rotate=' sh ~/bin/wacomRotate.sh'
+
 alias startAgent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/x220t_rsa'
+
+alias einstein='ssh einstein@192.168.0.2'
 
 alias rm=trash
 alias o='xdg-open'
+
+alias l='ls -lghF --group-directories-first'
 
 if [[ -r /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh ]]; then
     source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh

@@ -32,6 +32,7 @@ filetype off                  " required
  Plugin 'SirVer/ultisnips'
  Plugin 'jlanzarotta/bufexplorer'
  Plugin 'powerline/powerline'
+ Plugin 'sjl/gundo.vim'
 "Plugin 'easymotion/vim-easymotion'
 
  " All of your Plugins must be added before the following line
@@ -89,7 +90,6 @@ filetype off                  " required
         set hlsearch                    " Highlight search terms
         nnoremap <tab> %
         vnoremap <tab> %
-        set linebreak
         set nolist
         set formatoptions=qrn1
         set colorcolumn=80
@@ -166,8 +166,8 @@ filetype off                  " required
         set tabstop=4
 
     " Linebreak on 500 characters
-        set lbr
-        set tw=500
+      "  set lbr
+      "  set tw=500
 
         set ai      " Auto indent
         set si      " Smart indent
@@ -184,13 +184,6 @@ filetype off                  " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                   Mappings and shortcuts                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " Control shortcuts
-
-        noremap ; l
-        noremap l k
-        noremap k j
-        noremap j h
-
     " Arrows are unvimlike 
 
         nnoremap <up>    <nop>
@@ -214,15 +207,15 @@ filetype off                  " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Leader shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " Set map leader and keys
+    " Set map leader 
 
         let mapleader = "\<Space>"
+
+    " Keys for closing and saving
+
+        map <leader>q :wq<CR>
         map <leader>w :wa<CR>
         map <leader>s :w<CR>
-
-    " Nerdtree 
-
-        nnoremap <leader>n :NERDTree<CR>
 
     " Move split windows easier
 
@@ -231,7 +224,7 @@ filetype off                  " required
         noremap <leader>K <C-W><C-J>
         noremap <leader>J <C-W><C-H>
 
-    " tab mappings
+    " Tab mappings
         
         map <leader>tn :tabnew<cr>
         map <leader>to :tabonly<cr>
@@ -257,4 +250,22 @@ filetype off                  " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Nerdtree settings
 
+        nnoremap <F1> :NERDTree<CR>
         let NERDTreeShowBookmarks=1
+
+
+    " Gundo settings
+
+       nnoremap <F5> :GundoToggle<CR>
+
+       let g:gundo_width = 60 " Set the horizontal width of the Gundo graph (and preview)
+       let g:gundo_preview_height = 40 " Set the vertical height of the Gundo preview
+       let g:gundo_right = 1 " Opens gundo at the right side
+       let g:gundo_map_move_older = "k" " Set key to move down in gundo
+       let g:gundo_map_move_newer = "l" " Set key to move up in gundo
+       let g:gundo_close_on_revert = 1 " Close gundo when reverting
+
+    " Ultisnippets Settings
+        let g:UltiSnipsExpandTrigger="<tab>"
+        let g:UltiSnipsJumpForwardTrigger="<C-l>"
+        let g:UltiSnipsJumpBackwardTrigger="<C-k>"

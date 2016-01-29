@@ -1,0 +1,37 @@
+priority -50
+
+snippet if "begin proces" b
+if $1 then
+	$0
+end if;
+endsnippet
+
+snippet for "for loop" b
+for ${1: i} in 1 to $2 loop
+	$0
+end loop;
+endsnippet
+
+snippet proc "begin proces" b
+${1:proc} : process(${2:CLK})
+begin
+$0
+end process $1;
+endsnippet
+
+snippet case "switch case" b
+case $1 is
+	when $2 =>
+		$0	
+end case;
+endsnippet
+
+snippet others "others" 
+(others => '0')
+endsnippet
+
+snippet signal "create signal" 
+signal ${1:sig} : ${2:std_logic};
+endsnippet
+
+# vim:ft=snippets:
