@@ -1,15 +1,19 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sections:
-"   -> Vundle
-"   -> General
-"   -> User Interface
-"   -> Aesthetics
-"   -> Files, backups and undo
-"   -> Text, tab and indent related
-"   -> Automatic watch for .vimrc changes
-"   -> Mappings and shortcuts
-"   -> Leader shortcuts
-"   -> Plugin settings
+"
+"                        VIM - RUNCOM
+"
+"   Sections:
+"       -> Vundle
+"       -> General
+"       -> User Interface
+"       -> Aesthetics
+"       -> Files, backups and undo
+"       -> Text, tab and indent related
+"       -> Automatic watch for .vimrc changes
+"       -> Functions
+"       -> Mappings and shortcuts
+"       -> Leader shortcuts
+"       -> Plugin settings
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -25,7 +29,7 @@ filetype off                  " required
 
 " let Vundle manage Vundle, required
  Plugin 'VundleVim/Vundle.vim'
- 
+
  Plugin 'altercation/vim-colors-solarized'
  Plugin 'tpope/vim-fugitive'
  Plugin 'scrooloose/nerdtree'
@@ -52,13 +56,11 @@ filetype off                  " required
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
  set t_Co=256
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           General                           "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Enable filetype plugins
-        filetype plugin on              
+        filetype plugin on
         filetype indent on
 
         set autoread                    " Set to auto read when a file is changed from the outside
@@ -117,7 +119,7 @@ filetype off                  " required
         set magic
 
     " Show matching brackets when text indicator is over them
-        set showmatch                   
+        set showmatch
 
     " How many tenths of a second to blink when matching brackets
         set mat=2
@@ -171,7 +173,7 @@ filetype off                  " required
 
         set ai      " Auto indent
         set si      " Smart indent
-        set wrap    " Wrap lines
+        set nowrap  " No Wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "           Automatic watch for .vimrc changes                "
@@ -181,10 +183,21 @@ filetype off                  " required
         au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
     augroup END
 
+    augroup HiglightTODO
+        autocmd!
+        autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
+    augroup END
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                          Functions                          "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd BufWritePre * :%s/\s\+$//e
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                   Mappings and shortcuts                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " Arrows are unvimlike 
+    " Arrows are unvimlike
 
         nnoremap <up>    <nop>
         nnoremap <down>  <nop>
@@ -195,7 +208,7 @@ filetype off                  " required
         inoremap <left>  <nop>
         inoremap <right> <nop>
 
-    " Miscellaneous 
+    " Miscellaneous
 
         inoremap <F1> <ESC>
         nnoremap <F1> <ESC>
@@ -207,7 +220,7 @@ filetype off                  " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Leader shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " Set map leader 
+    " Set map leader
 
         let mapleader = "\<Space>"
 
@@ -225,7 +238,7 @@ filetype off                  " required
         noremap <leader>J <C-W><C-H>
 
     " Tab mappings
-        
+
         map <leader>tn :tabnew<cr>
         map <leader>to :tabonly<cr>
         map <leader>tc :tabclose<cr>
@@ -250,7 +263,7 @@ filetype off                  " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Nerdtree settings
 
-        nnoremap <F1> :NERDTree<CR>
+        nnoremap <F1> :NERDTreeToggle<CR>
         let NERDTreeShowBookmarks=1
 
 
