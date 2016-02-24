@@ -194,6 +194,12 @@ filetype off                  " required
 
 autocmd BufWritePre * :%s/\s\+$//e
 
+" When open a new file remember the cursor position of the last editing
+if has("autocmd")
+        " When editing a file, always jump to the last cursor position
+        autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                   Mappings and shortcuts                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -150,7 +150,7 @@
         alias cheatVim='evince ~/Dropbox/Meine_Technische_Informatik/Useful/VIM/VIM.pdf & '
 
     # Useful
-        alias rotate=' sh ~/bin/wacomRotate.sh'
+        alias rotate=' sh ~/Programme/wacomRotate.sh'
         alias rm=trash
         alias o='xdg-open'
         alias l='ls -lghF --group-directories-first --color=auto'
