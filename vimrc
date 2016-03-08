@@ -20,41 +20,41 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           Vundle                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
- set rtp+=~/.vim/bundle/Vundle.vim
- call vundle#begin()
+    " set the runtime path to include Vundle and initialize
+        set rtp+=~/.vim/bundle/Vundle.vim
+        call vundle#begin()
 
-" let Vundle manage Vundle, required
- Plugin 'VundleVim/Vundle.vim'
+    " let Vundle manage Vundle, required
+        Plugin 'VundleVim/Vundle.vim'
+        Plugin 'altercation/vim-colors-solarized'
+        Plugin 'tpope/vim-fugitive'
+        Plugin 'scrooloose/nerdtree'
+        Plugin 'SirVer/ultisnips'
+        Plugin 'jlanzarotta/bufexplorer'
+        Plugin 'powerline/powerline'
+        Plugin 'sjl/gundo.vim'
+        Plugin 'klen/python-mode'
+        Plugin 'easymotion/vim-easymotion'
 
- Plugin 'altercation/vim-colors-solarized'
- Plugin 'tpope/vim-fugitive'
- Plugin 'scrooloose/nerdtree'
- Plugin 'SirVer/ultisnips'
- Plugin 'jlanzarotta/bufexplorer'
- Plugin 'powerline/powerline'
- Plugin 'sjl/gundo.vim'
-"Plugin 'easymotion/vim-easymotion'
+    " All of your Plugins must be added before the following line
+        call vundle#end()            " required
+        filetype plugin indent on    " required
 
- " All of your Plugins must be added before the following line
- call vundle#end()            " required
- filetype plugin indent on    " required
+    " Activate Powerline
+        python from powerline.vim import setup as powerline_setup
+        python powerline_setup()
+        python del powerline_setup
 
-" Activate Powerline
- python from powerline.vim import setup as powerline_setup
- python powerline_setup()
- python del powerline_setup
+        set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 
- set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+    " Always show statusline
+        set laststatus=2
 
-" Always show statusline
- set laststatus=2
-
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
- set t_Co=256
+    " Use 256 colours (Use this setting only if your terminal supports 256 colours)
+        set t_Co=256
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           General                           "
@@ -66,7 +66,6 @@ filetype off                  " required
         set autoread                    " Set to auto read when a file is changed from the outside
         set shell=/bin/zsh              " Set shell
 
-        set nocompatible
         set modelines=0
         set shiftround                  " Use multiple of shiftwidth when indenting with '<' and '>'
         set softtabstop=4
@@ -94,11 +93,13 @@ filetype off                  " required
         vnoremap <tab> %
         set nolist
         set formatoptions=qrn1
-        set colorcolumn=80
+        set colorcolumn=120
 
         set history=1000                " remember more commands and search history
         set undolevels=1000             " use many muchos levels of undo
         set title                       " change the terminal's title
+
+        set autochdir                   " automatically change window's cwd to file's dir
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                        User Interface                       "
@@ -262,7 +263,7 @@ endif
 
     " Disable cursor highlighting
 
-        nnoremap <leader><space> :noh<cr>
+        "nnoremap <leader><space> :noh<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
@@ -288,3 +289,67 @@ endif
         let g:UltiSnipsExpandTrigger="<tab>"
         let g:UltiSnipsJumpForwardTrigger="<C-l>"
         let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
+    " Python-mode Settings
+        " Activate rope
+        " Keys:
+        " K             Show python docs
+        " <Ctrl-Space>  Rope autocomplete
+        " <Ctrl-c>g     Rope goto definition
+        " <Ctrl-c>d     Rope show documentation
+        " <Ctrl-c>f     Rope find occurrences
+        " <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+        " [[            Jump on previous class or function (normal, visual, operator modes)
+        " ]]            Jump on next class or function (normal, visual, operator modes)
+        " [M            Jump on previous class or method (normal, visual, operator modes)
+        " ]M            Jump on next class or method (normal, visual, operator modes)
+        let g:pymode_rope = 1
+
+        " Documentation
+        let g:pymode_doc = 1
+        let g:pymode_doc_key = 'K'
+
+        "Linting
+        let g:pymode_lint = 1
+        let g:pymode_lint_checker = "pyflakes,pep8"
+        " Auto check on save
+        let g:pymode_lint_write = 1
+
+        " Support virtualenv
+        let g:pymode_virtualenv = 1
+
+        " Enable breakpoints plugin
+        let g:pymode_breakpoint = 1
+        let g:pymode_breakpoint_bind = '<leader>b'
+
+        " syntax highlighting
+        let g:pymode_syntax = 1
+        let g:pymode_syntax_all = 1
+        let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+        let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+        " Don't autofold code
+        let g:pymode_folding = 0
+
+    " Fugitive
+        map <leader>gs :Gstatus
+        map <leader>gd :Gdiff
+        map <leader>gc :Gcommit
+        map <leader>gb :Gblame
+        map <leader>gl :Glog
+        map <leader>gp :Git push
+
+    " Bufexplorer
+        " To start exploring in the current window, use: >
+        "  <Leader>be   or   :BufExplorer   or   Your custom key mapping
+        " To toggle bufexplorer on or off in the current window, use: >
+        "  <Leader>bt   or   :ToggleBufExplorer   or   Your custom key mapping
+        " To start exploring in a newly split horizontal window, use: >
+        "  <Leader>bs   or   :BufExplorerHorizontalSplit   or   Your custom key mapping
+        " To start exploring in a newly split vertical window, use: >
+        "  <Leader>bv   or   :BufExplorerVerticalSplit   or   Your custom key mapping
+
+
+    " Easymotion
+        " Type <Leader><Leader>w to trigger the word motion |w|.
+        " Type <Leader><Leader>fo, and all "o" characters are highlighted.

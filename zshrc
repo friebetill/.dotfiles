@@ -157,5 +157,6 @@
         alias startAgent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/x220t_rsa'
         alias gittree='git log --graph --oneline --decorate --all'
         alias sourceall='source ~/.zshrc || source ~/.vimrc'
+        alias euler='cd ~/Dropbox/Freizeit/Projekte/ProjectEuler/'
 
     # source .zshrc_alias
