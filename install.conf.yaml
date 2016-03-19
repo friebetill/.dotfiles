@@ -1,10 +1,10 @@
-- clean: 
+- clean:
   - "~"
   - "~/.config/terminator"
 
 
 - link:
-    ~/.config/terminator: 
+    ~/.config/terminator:
       create: true
       path: config/terminator/
     ~/.vim: vim/
@@ -12,8 +12,9 @@
     ~/.zshrc: zshrc
     ~/.zshrc.pre-oh-my-zsh: zshrc.pre-oh-my-zsh
     ~/.oh-my-zsh: oh-my-zsh
+    ~/.fonts: fonts
 
-    
+
 
 - shell:
   - "vim +PluginInstall +qall"

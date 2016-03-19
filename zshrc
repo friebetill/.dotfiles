@@ -88,6 +88,19 @@
         mkdir "$1" && cd "$1" ;
     }
 
+    # Empty the trash in .trash
+    function empty-trash() {
+        rm ~/.trash/*
+    }
+
+    # Create dir and switch into it
+    function rm() {
+        # check whether file is already inside .trash folder
+        # true => delete file permanently
+        # false => move it to .trash
+        mv "$1" ~/.trash;
+    }
+
     # Insert "sudo " at the beginning of the line
     function prepend-sudo {
         if [[ $BUFFER != "sudo "* ]]; then
@@ -151,9 +164,10 @@
 
     # Useful
         alias rotate=' sh ~/Programme/wacomRotate.sh'
-        alias rm=trash
+        # alias rm=m
         alias o='xdg-open'
         alias l='ls -lghF --group-directories-first --color=auto'
+        alias ll='ls -laghF --group-directories-first --color=auto'
         alias startAgent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/x220t_rsa'
         alias gittree='git log --graph --oneline --decorate --all'
         alias sourceall='source ~/.zshrc || source ~/.vimrc'
