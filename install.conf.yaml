@@ -13,6 +13,7 @@
     ~/.zshrc.pre-oh-my-zsh: zshrc.pre-oh-my-zsh
     ~/.oh-my-zsh: oh-my-zsh
     ~/.fonts: fonts
+    ~/.Xmodmap: Xmodmap
 
 
 

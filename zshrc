@@ -80,38 +80,6 @@
     alias  vim="$VISUAL"
 
 ###############################################################
-#                         Functions                           #
-###############################################################
-
-    # Create dir and switch into it
-    function mkcd() {
-        mkdir "$1" && cd "$1" ;
-    }
-
-    # Empty the trash in .trash
-    function empty-trash() {
-        rm ~/.trash/*
-    }
-
-    # Create dir and switch into it
-    function rm() {
-        # check whether file is already inside .trash folder
-        # true => delete file permanently
-        # false => move it to .trash
-        mv "$1" ~/.trash;
-    }
-
-    # Insert "sudo " at the beginning of the line
-    function prepend-sudo {
-        if [[ $BUFFER != "sudo "* ]]; then
-            BUFFER="sudo $BUFFER"; CURSOR+=5
-        fi
-    }
-    zle -N prepend-sudo
-    [[ -n "^[s" ]] && \
-    bindkey "^[s" prepend-sudo
-
-###############################################################
 #                          Aliases                            #
 ###############################################################
 
@@ -164,7 +132,6 @@
 
     # Useful
         alias rotate=' sh ~/Programme/wacomRotate.sh'
-        # alias rm=m
         alias o='xdg-open'
         alias l='ls -lghF --group-directories-first --color=auto'
         alias ll='ls -laghF --group-directories-first --color=auto'
@@ -174,3 +141,36 @@
         alias euler='cd ~/Dropbox/Freizeit/Projekte/ProjectEuler/'
 
     # source .zshrc_alias
+
+###############################################################
+#                         Functions                           #
+###############################################################
+
+    # Create dir and switch into it
+    function mkcd() {
+        mkdir "$1" && cd "$1" ;
+    }
+
+    # Empty the trash in .trash
+    function empty-trash() {
+        rm -rf ~/.trash/*
+    }
+
+    # Create dir and switch into it
+    function rem() {
+        # check whether file is already inside .trash folder
+        # true => delete file permanently
+        # false => move it to .trash
+        mv -f "$1" ~/.trash;
+    }
+
+    # Insert "sudo " at the beginning of the line
+    function prepend-sudo {
+        if [[ $BUFFER != "sudo "* ]]; then
+            BUFFER="sudo $BUFFER"; CURSOR+=5
+        fi
+    }
+    zle -N prepend-sudo
+    [[ -n "^[s" ]] && \
+    bindkey "^[s" prepend-sudo
+
