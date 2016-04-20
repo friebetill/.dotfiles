@@ -23,15 +23,15 @@
     ZSH_THEME="powerlevel9k/powerlevel9k"
     POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
-    DEFAULT_USER="till"
+    #DEFAULT_USER="till"
 
     # why would you type 'cd dir' if you could just type 'dir'?
     setopt AUTO_CD
 
     # Uncomment the following line to change how often to auto-update (in days).
-    export UPDATE_ZSH_DAYS=13
+    export UPDATE_ZSH_DAYS=7
 
-    export PATH="/home/till/anaconda/bin:/home/till/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+    #export PATH="/home/till/anaconda/bin:/home/till/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
     # Uncomment the following line to enable command auto-correction.
     ENABLE_CORRECTION="true"
@@ -56,6 +56,9 @@
 
     # My own settings
     setopt vi
+
+    # VI disables CTRL-r  history search
+    bindkey "^R" history-incremental-search-backward
 
     # No output when background job finishs
     setopt no_notify
@@ -124,7 +127,6 @@
 
     # SSH Connections
         alias toeinstein='ssh einstein@192.168.0.2'
-        alias toinet='ssh till@tetris.inet.tu-berlin.de'
 
     # Cheatsheets
         alias cheatLatex='evince ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/Cheatsheets/latexsheet-a4.pdf & '
@@ -139,6 +141,7 @@
         alias gittree='git log --graph --oneline --decorate --all'
         alias sourceall='source ~/.zshrc || source ~/.vimrc'
         alias euler='cd ~/Dropbox/Freizeit/Projekte/ProjectEuler/'
+        alias crawler='cd ~/Dropbox/Freizeit/Projekte/Crawler/'
 
     # source .zshrc_alias
 
