@@ -6,8 +6,8 @@
 - link:
     ~/.config/terminator:
       create: true
-      path: config/terminator/
-    ~/.vim: vim/
+      path: config/terminator
+    ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.zshrc: zshrc
     ~/.zshrc.pre-oh-my-zsh: zshrc.pre-oh-my-zsh

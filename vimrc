@@ -24,12 +24,12 @@
     filetype off                  " required
 
     " set the runtime path to include Vundle and initialize
-        set rtp+=~/.vim/bundle/Vundle.vim
+        set rtp+=~/.vim/bundle/vundle
         call vundle#begin()
 
     " let Vundle manage Vundle, required
         Plugin 'VundleVim/Vundle.vim'
-        Plugin 'altercation/vim-colors-solarized'
+        Plugin 'altercation/solarized'
         Plugin 'tpope/vim-fugitive'
         Plugin 'scrooloose/nerdtree'
         Plugin 'SirVer/ultisnips'
@@ -37,7 +37,7 @@
         Plugin 'powerline/powerline'
         Plugin 'sjl/gundo.vim'
         Plugin 'klen/python-mode'
-        Plugin 'easymotion/vim-easymotion'
+        Plugin 'easymotion/easymotion'
 
     " All of your Plugins must be added before the following line
         call vundle#end()            " required
