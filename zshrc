@@ -177,3 +177,4 @@
     [[ -n "^[s" ]] && \
     bindkey "^[s" prepend-sudo
 
+source /opt/ros/jade/setup.zsh
