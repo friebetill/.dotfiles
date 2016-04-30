@@ -1,14 +1,14 @@
 ##############################################################
-#
-#                        ZSHELL - RUNCOM
-#
-#    Sections:
-#       -> Environment
-#       -> Options
-#       -> Editor
-#       -> Functions
-#       -> Aliases
-#
+#                                                            #
+#                        ZSHELL - RUNCOM                     #
+#                                                            #
+#    Sections:                                               #
+#       -> Environment                                       #
+#       -> Options                                           #
+#       -> Editor                                            #
+#       -> Functions                                         #
+#       -> Aliases                                           #
+#                                                            #
 ###############################################################
 
 ###############################################################
@@ -42,6 +42,10 @@
     if [[ -r /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh ]]; then
         source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
     fi
+
+    # Switches Ctrl with CapsLk
+    xmodmap ~/.dotfiles/Xmodmap
+
 
 ###############################################################
 #                          Options                            #
@@ -106,20 +110,15 @@
         # Semester shortcuts
             alias semester='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/'
 
-            alias hwp='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/Hardwarepraktikum/'
-            alias .hwp='~/Dropbox/Meine_Technische_Informatik/5.Semester/Hardwarepraktikum'
+            alias tet='cd ~/Dropbox/Meine_Technische_Informatik/6.Semester/Theoretische_Elektrotechnik_I/'
 
-            alias bsp='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/Betriebssystempraktikum/'
-            alias .bsp='~/Dropbox/Meine_Technische_Informatik/5.Semester/Betriebssystempraktikum'
+            alias sch='cd ~/Dropbox/Meine_Technische_Informatik/6.Semester/Schaltungstechnik/'
 
-            alias mdt='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/Messtechnik/'
-            alias .mdt='~/Dropbox/Meine_Technische_Informatik/5.Semester/Messtechnik'
+            alias ki='cd ~/Dropbox/Meine_Technische_Informatik/6.Semester/Kunstliche_Intelligenz_Projekt/'
+            alias rungame='java -jar Versus.jar ./config/roundrobin.xml'
 
-            alias ki='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/KuenstlicheIntelligenz/Probabilistische/'
-            alias .ki='~/Dropbox/Meine_Technische_Informatik/5.Semester/KuenstlicheIntelligenz/Probabilistische'
-
-            alias sem='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/KuenstlicheIntelligenz/Seminar/'
-            alias .sem='~/Dropbox/Meine_Technische_Informatik/5.Semester/KuenstlicheIntelligenz/Seminar'
+            alias rob='cd ~/Dropbox/Meine_Technische_Informatik/6.Semester/Robotics_Fundamentals/'
+            alias orange='ssh orange@192.168.0.120'
 
     # TMux
         alias newS='tmux new -s $1'
@@ -177,29 +176,19 @@
     [[ -n "^[s" ]] && \
     bindkey "^[s" prepend-sudo
 
+    function downloadAllPDFs() {
+        wget -p -r -nd -l 1 -e robots=off -A pdf "$1"
+    }
+
 ###############################################################
-#                Use modern completion system                 #
+#                         Robotics                            #
 ###############################################################
-
-autoload -Uz compinit
-compinit
-
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' menu select=long
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
-
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 source /opt/ros/jade/setup.zsh
+source ~/catkin_ws/devel/setup.zsh
+
+me=$(hostname -I | cut -f1 -d' ')
+master=192.168.0.129
+# echo "setting $master as ROS MASTER for me ($me)"
+export ROS_MASTER_URI=http://$master:11311
+export ROS_IP=$me

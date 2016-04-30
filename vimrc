@@ -38,6 +38,7 @@
         Plugin 'sjl/gundo.vim'
         Plugin 'klen/python-mode'
         Plugin 'easymotion/easymotion'
+        Plugin 'majutsushi/tagbar'
 
     " All of your Plugins must be added before the following line
         call vundle#end()            " required
@@ -137,7 +138,7 @@
     " Enable syntax hightlighting
         syntax on
 
-        colorscheme solarized
+       " colorscheme solarized
         set background=dark
 
     " Set utf8 as standard encoding and en_US as the standard language
@@ -349,7 +350,9 @@ endif
         " To start exploring in a newly split vertical window, use: >
         "  <Leader>bv   or   :BufExplorerVerticalSplit   or   Your custom key mapping
 
-
     " Easymotion
         " Type <Leader><Leader>w to trigger the word motion |w|.
         " Type <Leader><Leader>fo, and all "o" characters are highlighted.
+
+    " Tagbar
+        nmap <F8> :TagbarToggle<CR>
