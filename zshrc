@@ -43,9 +43,8 @@
         source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
     fi
 
-    # Switches Ctrl with CapsLk
-    xmodmap ~/.dotfiles/Xmodmap
-
+    # Switches CapsLk and Ctrl
+    /usr/bin/setxkbmap -option "ctrl:swapcaps"
 
 ###############################################################
 #                          Options                            #
@@ -99,7 +98,7 @@
         alias vimconfig='vim ~/.vimrc'
 
     # Programs
-        alias eclipse='~/Programme/eclipse/eclipse'
+        alias idea='~/Programme/idea-IU-145.597.3/bin/idea.sh &'
 
     # Folder shortcuts
         alias inet='cd ~/repos/cloudnet_simulator/Simulator\ Framework/'

@@ -1,0 +1,42 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"                        VIM - RUNCOM
+"
+"   Sections:
+"       -> General
+"       -> Mappings and shortcuts
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           General                           "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    set number                      " Always show line numbers
+
+    " Set 7 lines to the cursor - when moving vertically using j/k
+        set so=7
+
+    " Always show current position
+        set ruler
+
+    " How many tenths of a second to blink when matching brackets
+        set mat=2
+
+        set relativenumber
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   Mappings and shortcuts                    "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Arrows are unvimlike
+
+        nnoremap <up>    <nop>
+        nnoremap <down>  <nop>
+        nnoremap <left>  <nop>
+        nnoremap <right> <nop>
+        inoremap <up>    <nop>
+        inoremap <down>  <nop>
+        inoremap <left>  <nop>
+        inoremap <right> <nop>
+
