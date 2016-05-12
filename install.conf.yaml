@@ -2,21 +2,15 @@
   - "~"
   - "~/.config/terminator"
 
-
 - link:
-    ~/.config/terminator:
-      create: true
-      path: config/terminator
+    ~/.config/terminator/config: runcom/terminator
     ~/.vim: vim
-    ~/.vimrc: vimrc
-    ~/.ideavimrc: ideavimrc
-    ~/.zshrc: zshrc
-    ~/.zshrc.pre-oh-my-zsh: zshrc.pre-oh-my-zsh
-    ~/.oh-my-zsh: oh-my-zsh
+    ~/.vimrc: runcom/vimrc
+    ~/.ideavimrc: runcom/ideavimrc
+    ~/.zshrc: runcom/zshrc
+    ~/.zshrc.pre-oh-my-zsh: runcom/zshrc.pre-oh-my-zsh
+    ~/.oh-my-zsh: zsh/oh-my-zsh
     ~/.fonts: fonts
-    ~/.Xmodmap: Xmodmap
-
-
 
 - shell:
   - "vim +PluginInstall +qall"

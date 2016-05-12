@@ -1,25 +1,25 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-"                        VIM - RUNCOM
-"
-"   Sections:
-"       -> Vundle
-"       -> General
-"       -> User Interface
-"       -> Aesthetics
-"       -> Files, backups and undo
-"       -> Text, tab and indent related
-"       -> Automatic watch for .vimrc changes
-"       -> Functions
-"       -> Mappings and shortcuts
-"       -> Leader shortcuts
-"       -> Plugin settings
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                                                                           "
+"                        VIM - RUNCOM                                                       "
+"                                                                                           "
+"   Sections:                                                                               "
+"       -> Vundle                                                                           "
+"       -> General                                                                          "
+"       -> User Interface                                                                   "
+"       -> Aesthetics                                                                       "
+"       -> Files, backups and undo                                                          "
+"       -> Text, tab and indent related                                                     "
+"       -> Automatic watch for .vimrc changes                                               "
+"       -> Functions                                                                        "
+"       -> Mappings and shortcuts                                                           "
+"       -> Leader shortcuts                                                                 "
+"       -> Plugin settings                                                                  "
+"                                                                                           "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           Vundle                            "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           Vundle                                                          "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     set nocompatible              " be iMproved, required
     filetype off                  " required
 
@@ -29,7 +29,8 @@
 
     " let Vundle manage Vundle, required
         Plugin 'VundleVim/Vundle.vim'
-        Plugin 'altercation/solarized'
+        Plugin 'altercation/vim-colors-solarized'
+        "Plugin 'altercation/solarized'
         Plugin 'tpope/vim-fugitive'
         Plugin 'scrooloose/nerdtree'
         Plugin 'SirVer/ultisnips'
@@ -39,6 +40,9 @@
         Plugin 'klen/python-mode'
         Plugin 'easymotion/easymotion'
         Plugin 'majutsushi/tagbar'
+        Plugin 'vim-scripts/c.vim'
+        Plugin 'Valloric/YouCompleteMe'
+        Plugin 'Chiel92/vim-autoformat'
 
     " All of your Plugins must be added before the following line
         call vundle#end()            " required
@@ -57,9 +61,9 @@
     " Use 256 colours (Use this setting only if your terminal supports 256 colours)
         set t_Co=256
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           General                           "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           General                                                         "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Enable filetype plugins
         filetype plugin on
         filetype indent on
@@ -102,9 +106,12 @@
 
         set autochdir                   " automatically change window's cwd to file's dir
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                        User Interface                       "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+        set exrc                        " Looks for vimrc in current folder, for projcet specfic settings
+        set secure                      " Disable critical vim commands in currentfolder, look exrc
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                        User Interface                                                     "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Set 7 lines to the cursor - when moving vertically using j/k
         set so=7
 
@@ -132,13 +139,13 @@
         set t_vb=
         set tm=500
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           Aesthetics                        "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           Aesthetics                                                      "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Enable syntax hightlighting
         syntax on
 
-       " colorscheme solarized
+        colorscheme solarized
         set background=dark
 
     " Set utf8 as standard encoding and en_US as the standard language
@@ -147,17 +154,17 @@
         set guifont=inconsolata:h12
         set relativenumber
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                   Files, backups and undo                   "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   Files, backups and undo                                                 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Turn backup off, since most stuff is in git etc. anyway...
         set nobackup
         set nowb
         set noswapfile
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                Text, tab and indent related                 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                Text, tab and indent related                                               "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     " Use spaces instead of tabs
         set expandtab
@@ -177,9 +184,9 @@
         set si      " Smart indent
         set nowrap  " No Wrap lines
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"           Automatic watch for .vimrc changes                "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"           Automatic watch for .vimrc changes                                              "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     augroup myvimrc
         au!
         au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
@@ -190,21 +197,27 @@
         autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
     augroup END
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                          Functions                          "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Code will be formatted upon saving your file
+    au BufWrite * :Autoformat
+    let g:autoformat_autoindent = 0
+    let g:autoformat_retab = 0
+    let g:autoformat_remove_trailing_spaces = 0
 
-autocmd BufWritePre * :%s/\s\+$//e
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                          Functions                                                        "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" When open a new file remember the cursor position of the last editing
-if has("autocmd")
-        " When editing a file, always jump to the last cursor position
-        autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
-endif
+    autocmd BufWritePre * :%s/\s\+$//e
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                   Mappings and shortcuts                    "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " When open a new file remember the cursor position of the last editing
+    if has("autocmd")
+            " When editing a file, always jump to the last cursor position
+            autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+    endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   Mappings and shortcuts                                                  "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Arrows are unvimlike
 
         nnoremap <up>    <nop>
@@ -225,9 +238,9 @@ endif
         vnoremap . :norm.<CR>
         set pastetoggle=<F2>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Leader shortcuts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Leader shortcuts                                                                       "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Set map leader
 
         let mapleader = "\<Space>"
@@ -266,9 +279,9 @@ endif
 
         "nnoremap <leader><space> :noh<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin settings                                                                        "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Nerdtree settings
 
         nnoremap <F1> :NERDTreeToggle<CR>
