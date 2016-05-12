@@ -29,8 +29,10 @@
 
     " let Vundle manage Vundle, required
         Plugin 'VundleVim/Vundle.vim'
+
+    " Colorscheme solarized
         Plugin 'altercation/vim-colors-solarized'
-        "Plugin 'altercation/solarized'
+
         Plugin 'tpope/vim-fugitive'
         Plugin 'scrooloose/nerdtree'
         Plugin 'SirVer/ultisnips'
@@ -40,9 +42,9 @@
         Plugin 'klen/python-mode'
         Plugin 'easymotion/easymotion'
         Plugin 'majutsushi/tagbar'
-        Plugin 'vim-scripts/c.vim'
+        "Plugin 'vim-scripts/c.vim'
         Plugin 'Valloric/YouCompleteMe'
-        Plugin 'Chiel92/vim-autoformat'
+        Plugin 'rhysd/vim-clang-format'
 
     " All of your Plugins must be added before the following line
         call vundle#end()            " required
@@ -197,12 +199,6 @@
         autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
     augroup END
 
-    " Code will be formatted upon saving your file
-    au BufWrite * :Autoformat
-    let g:autoformat_autoindent = 0
-    let g:autoformat_retab = 0
-    let g:autoformat_remove_trailing_spaces = 0
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Functions                                                        "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -237,6 +233,11 @@
         au FocusLost * :wa
         vnoremap . :norm.<CR>
         set pastetoggle=<F2>
+
+    " Autoformat
+
+        map <C-I> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>
+        imap <C-I> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>i
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Leader shortcuts                                                                       "
@@ -274,6 +275,7 @@
         map <leader>7 7gt
         map <leader>8 8gt
         map <leader>9 9gt
+
 
     " Disable cursor highlighting
 
@@ -369,3 +371,6 @@
 
     " Tagbar
         nmap <F8> :TagbarToggle<CR>
+
+    " YouCompleteMe
+        let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
