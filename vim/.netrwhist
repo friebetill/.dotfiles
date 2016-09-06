@@ -1,6 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/usr/share/vim/vim74/colors'
-let g:netrw_dirhist_2='/usr/share/X11/xkb/symbols'
-let g:netrw_dirhist_3='/home/euler/.dotfiles'
-let g:netrw_dirhist_4='/home/euler/.dotfiles/.git'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/euler/Dropbox/Meine_Technische_Informatik/6.Semester/Kunstliche_Intelligenz_Projekt/KI_PJ_SS16/build'
+let g:netrw_dirhist_2='/home/euler/Dropbox/Meine_Technische_Informatik/6.Semester/Kunstliche_Intelligenz_Projekt/KI_PJ_SS16/build/config'
+let g:netrw_dirhist_3='/home/euler/catkin_ws/src/orange_fundamentals/docu/ha3'
+let g:netrw_dirhist_4='/home/euler/catkin_ws/src/orange_fundamentals/docu/ha3_docu/tex'
+let g:netrw_dirhist_5='/home/euler/Dropbox/Meine_Technische_Informatik/6.Semester/Kunstliche_Intelligenz_Projekt/KI_PJ_SS16/doc/milestone_4'
+let g:netrw_dirhist_6='/home/euler/Dropbox/Meine_Technische_Informatik/6.Semester/Kunstliche_Intelligenz_Projekt/KI_PJ_SS16/build/config'
+let g:netrw_dirhist_7='/home/euler/catkin_ws/src/orange_fundamentals/src/examples'
+let g:netrw_dirhist_8='/opt'
+let g:netrw_dirhist_9='/'

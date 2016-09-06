@@ -12,6 +12,8 @@
     ~/.oh-my-zsh: zsh/oh-my-zsh
     ~/.fonts: fonts
     ~/.ycm_extra_conf.py: ycm_extra_conf.py
+    ~/.todo.cfg: todo.cfg
+    ~/.config/redshift.conf: config/redshift.conf
 
 - shell:
   - "vim +PluginInstall +qall"

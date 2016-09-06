@@ -1,14 +1,15 @@
-##############################################################
-#                                                            #
-#                        ZSHELL - RUNCOM                     #
-#                                                            #
-#    Sections:                                               #
-#       -> Environment                                       #
-#       -> Options                                           #
-#       -> Editor                                            #
-#       -> Functions                                         #
-#       -> Aliases                                           #
-#                                                            #
+###############################################################
+#                                                             #
+#                        ZSHELL - RUNCOM                      #
+#                                                             #
+#    Sections:                                                #
+#       -> Environment                                        #
+#       -> Options                                            #
+#       -> Editor                                             #
+#       -> Functions                                          #
+#       -> Aliases                                            #
+#       -> Source                                             #
+#                                                             #
 ###############################################################
 
 ###############################################################
@@ -31,8 +32,6 @@
     # Uncomment the following line to change how often to auto-update (in days).
     export UPDATE_ZSH_DAYS=7
 
-    #export PATH="/home/till/anaconda/bin:/home/till/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-
     # Uncomment the following line to enable command auto-correction.
     ENABLE_CORRECTION="true"
 
@@ -45,6 +44,8 @@
 
     # Switches CapsLk and Ctrl
     /usr/bin/setxkbmap -option "ctrl:swapcaps"
+
+    export CHERE_INVOKING=1
 
 ###############################################################
 #                          Options                            #
@@ -60,7 +61,7 @@
     # My own settings
     setopt vi
 
-    # VI disables CTRL-r  history search
+    # VI disables CTRL-r history search
     bindkey "^R" history-incremental-search-backward
 
     # No output when background job finishs
@@ -96,15 +97,24 @@
         alias zshconfig='vim ~/.zshrc'
         alias ohmyzsh='vim ~/.oh-my-zsh'
         alias vimconfig='vim ~/.vimrc'
+        alias tmuxconfig='vim ~/.tmux.conf'
 
     # Programs
         alias idea='~/Programme/idea-IU-145.597.3/bin/idea.sh &'
+        alias franz='~/Programme/Franz/Franz &'
+        # alias python='python3'
 
     # Folder shortcuts
-        alias inet='cd ~/repos/cloudnet_simulator/Simulator\ Framework/'
-        alias paleo='cd ~/Dropbox/Freizeit/Ernaehrung/Paleo/'
-        alias lauren='cd ~/Dropbox/Freizeit/Sport/MarkLauren'
-        alias freizeit='cd ~/Dropbox/Freizeit'
+        # General dropbox links
+            alias paleo='cd ~/Dropbox/Freizeit/Ernaehrung/Paleo/'
+            alias lauren='cd ~/Dropbox/Freizeit/Sport/MarkLauren'
+            alias freizeit='cd ~/Dropbox/Freizeit'
+            alias wohnung='cd ~/Dropbox/Verwaltung/Mietwohnung/Spandauer_Damm_110'
+
+        # Project shortcuts
+            alias projekte='cd ~/Dropbox/Freizeit/Projekte/'
+            alias euler='cd ~/Dropbox/Freizeit/Projekte/ProjectEuler/'
+            alias crawler='cd ~/Dropbox/Freizeit/Projekte/Crawler/'
 
         # Semester shortcuts
             alias semester='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/'
@@ -117,7 +127,7 @@
             alias rungame='java -jar Versus.jar ./config/roundrobin.xml'
 
             alias rob='cd ~/Dropbox/Meine_Technische_Informatik/6.Semester/Robotics_Fundamentals/'
-            alias orange='ssh orange@192.168.0.120'
+            alias orange='cd ~/catkin_ws/src/orange_fundamentals/'
 
     # TMux
         alias newS='tmux new -s $1'
@@ -127,8 +137,12 @@
         alias toeinstein='ssh einstein@192.168.0.2'
 
     # Cheatsheets
-        alias cheatLatex='evince ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/Cheatsheets/latexsheet-a4.pdf & '
+        alias cheatLatex='evince ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/latexsheet-a4.pdf & '
         alias cheatVim='evince ~/Dropbox/Meine_Technische_Informatik/Useful/VIM/VIM.pdf & '
+
+    # Templates
+        alias templatePresentation='cp -r ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/template-presentation .'
+        alias templateDocumentation='cp -r ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/template-docu . '
 
     # Useful
         alias rotate=' sh ~/Programme/wacomRotate.sh'
@@ -136,10 +150,14 @@
         alias l='ls -lghF --group-directories-first --color=auto'
         alias ll='ls -laghF --group-directories-first --color=auto'
         alias startAgent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/x220t_rsa'
+        alias sourceall='source ~/.zshrc || source ~/.vimrc || tmux source-file ~/.tmux.conf || tmux source ~/.tmux.conf'
+        alias down='cd ~/Downloads'
+        alias r='tput reset'
+
         alias gittree='git log --graph --oneline --decorate --all'
-        alias sourceall='source ~/.zshrc || source ~/.vimrc'
-        alias euler='cd ~/Dropbox/Freizeit/Projekte/ProjectEuler/'
-        alias crawler='cd ~/Dropbox/Freizeit/Projekte/Crawler/'
+
+        bindkey "^[[A" history-beginning-search-backward
+        bindkey "^[[B" history-beginning-search-forward
 
     # source .zshrc_alias
 
@@ -179,15 +197,31 @@
         wget -p -r -nd -l 1 -e robots=off -A pdf "$1"
     }
 
+# ###############################################################
+# #                         Robotics                            #
+# ###############################################################
+#
+# source /opt/ros/jade/setup.zsh
+# source ~/catkin_ws/devel/setup.zsh
+#
+# me=$(hostname -I | cut -f1 -d' ')
+# master=192.168.0.90
+# # master=192.168.0.205
+# # echo "setting $master as ROS MASTER for me ($me)"
+# export ROS_MASTER_URI=http://$master:11311
+# export ROS_IP=$me
+#
+# # me=127.0.0.1
+# # master=127.0.0.1
+# # # echo "setting $master as ROS MASTER for me ($me)"
+# # export ROS_MASTER_URI=http://$master:11311
+# # export ROS_IP=127.0.0.1
+
 ###############################################################
-#                         Robotics                            #
+#                          Source                             #
 ###############################################################
 
-source /opt/ros/jade/setup.zsh
-source ~/catkin_ws/devel/setup.zsh
-
-me=$(hostname -I | cut -f1 -d' ')
-master=192.168.0.129
-# echo "setting $master as ROS MASTER for me ($me)"
-export ROS_MASTER_URI=http://$master:11311
-export ROS_IP=$me
+# source ~/Programme/todo.txt_cli-2.9/todo_completion
+export TODOTXT_DEFAULT_ACTION=ls
+alias t='~/Programme/todo.txt_cli-2.9/todo.sh -d ~/.todo.cfg'
+export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'

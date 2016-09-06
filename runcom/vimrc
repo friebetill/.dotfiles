@@ -11,9 +11,11 @@
 "       -> Text, tab and indent related                                                     "
 "       -> Automatic watch for .vimrc changes                                               "
 "       -> Functions                                                                        "
+"       -> Not well known shortcuts
 "       -> Mappings and shortcuts                                                           "
 "       -> Leader shortcuts                                                                 "
 "       -> Plugin settings                                                                  "
+"       -> Abbreviations
 "                                                                                           "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -30,21 +32,46 @@
     " let Vundle manage Vundle, required
         Plugin 'VundleVim/Vundle.vim'
 
-    " Colorscheme solarized
-        Plugin 'altercation/vim-colors-solarized'
+        " Aestetic plugins
+            Plugin 'altercation/vim-colors-solarized'
+            Plugin 'powerline/powerline'
 
-        Plugin 'tpope/vim-fugitive'
-        Plugin 'scrooloose/nerdtree'
-        Plugin 'SirVer/ultisnips'
+        " Git plugin
+            Plugin 'tpope/vim-fugitive'
+
+        " File plugins
+            Plugin 'ctrlpvim/ctrlp.vim'
+            Plugin 'scrooloose/nerdtree'
+
+        " Syntax checker
+            Plugin 'scrooloose/syntastic'
+
         Plugin 'jlanzarotta/bufexplorer'
-        Plugin 'powerline/powerline'
+        Plugin 'SirVer/ultisnips'
         Plugin 'sjl/gundo.vim'
-        Plugin 'klen/python-mode'
         Plugin 'easymotion/easymotion'
         Plugin 'majutsushi/tagbar'
         "Plugin 'vim-scripts/c.vim'
+
         Plugin 'Valloric/YouCompleteMe'
-        Plugin 'rhysd/vim-clang-format'
+        Plugin 'klen/python-mode'
+
+        " Autoformat Plugins
+            Plugin 'Chiel92/vim-autoformat'
+            Plugin 'rhysd/vim-clang-format'
+
+
+        " Language specific plugins
+            Plugin 'gregsexton/MatchTag', { 'for': 'html' } " match tags in html, similar to paren support
+            Plugin 'othree/html5.vim', { 'for': 'html' } " html5 support
+        " Plugin 'pangloss/vim-javascript', { 'for': 'javascript' } " JavaScript support
+            Plugin 'gavocanov/vim-js-indent', { 'for': 'javascript' } " JavaScript indent support
+            Plugin 'moll/vim-node', { 'for': 'javascript' } " node support
+        " Plugin 'jelera/vim-javascript-syntax', { 'for': 'javascript' } " JavaScript syntax plugin
+            Plugin 'othree/yajs.vim', { 'for': 'javascript' } " JavaScript syntax plugin
+            Plugin 'mxw/vim-jsx', { 'for': 'jsx' } " JSX support
+            Plugin 'elzr/vim-json', { 'for': 'json' } " JSON support
+            Plugin 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
 
     " All of your Plugins must be added before the following line
         call vundle#end()            " required
@@ -73,9 +100,15 @@
         set autoread                    " Set to auto read when a file is changed from the outside
         set shell=/bin/zsh              " Set shell
 
+    " Tab control
+        set expandtab                   " Use spaces instead of tabs
+        set smarttab                    " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+        set tabstop=4                   " the visible width of tabs
+        set softtabstop=4               " edit as if the tabs are 4 characters wide
+        set shiftwidth=4                " 1 tab = 4 spaces
+        set shiftround                  " round indent to a multiple of 'shiftwidth'
+
         set modelines=0
-        set shiftround                  " Use multiple of shiftwidth when indenting with '<' and '>'
-        set softtabstop=4
         set scrolloff=3
         set autoindent                  " Always set autoindenting on
         set copyindent                  " Copy the previous indentation on autoindenting
@@ -86,21 +119,13 @@
         set ttyfast
         set backspace=indent,eol,start  " Allow backspacing over everything in insert mode
         set laststatus=2
-        set number                      " Always show line numbers
         set noundofile
-        nnoremap / /\v
-        vnoremap / /\v
-        set ignorecase                  " Ignore case when searching
-        set smartcase                   " Ignore case if search pattern is all lowercase,
-                                "   Case-sensitive otherwise
+
         set gdefault
-        set incsearch                   " Show search matches as you type
-        set hlsearch                    " Highlight search terms
-        nnoremap <tab> %
-        vnoremap <tab> %
         set nolist
-        set formatoptions=qrn1
         set colorcolumn=120
+
+        set clipboard=unnamed           " Systemwide clipboard
 
         set history=1000                " remember more commands and search history
         set undolevels=1000             " use many muchos levels of undo
@@ -111,9 +136,28 @@
         set exrc                        " Looks for vimrc in current folder, for projcet specfic settings
         set secure                      " Disable critical vim commands in currentfolder, look exrc
 
+    " code folding settings
+        set foldmethod=syntax           " fold based on indent
+        set foldnestmax=10              " deepest fold is 10 levels
+        set nofoldenable                " don't fold by default
+        set foldlevel=1
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                        User Interface                                                     "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    " Searching
+        set ignorecase                  " Ignore case when searching
+        set smartcase                   " Ignore case if search pattern is all lowercase,
+        set hlsearch                    " Highlight search terms
+        set incsearch                   " Show search matches as you type
+        set nolazyredraw                " don't redraw while executing macros
+
+    " Vim’s “very magic” search mode
+        nnoremap / /\v
+        vnoremap / /\v
+
     " Set 7 lines to the cursor - when moving vertically using j/k
         set so=7
 
@@ -154,7 +198,8 @@
         set encoding=utf-8
 
         set guifont=inconsolata:h12
-        set relativenumber
+        set number                      " Always show line numbers
+        set relativenumber              " Show numbers relative to cursor
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                   Files, backups and undo                                                 "
@@ -168,19 +213,6 @@
 "                Text, tab and indent related                                               "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    " Use spaces instead of tabs
-        set expandtab
-
-    " Insert tabs on the start of a line according to Shiftwidth, not tabstop
-        set smarttab
-
-    " 1 tab == 4 spaces
-        set shiftwidth=4
-        set tabstop=4
-
-    " Linebreak on 500 characters
-      "  set lbr
-      "  set tw=500
 
         set ai      " Auto indent
         set si      " Smart indent
@@ -211,33 +243,104 @@
             autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
     endif
 
+    " Section AutoGroups {{{
+    " file type specific settings
+    augroup configgroup
+        autocmd!
+        autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+        autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+        autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+        autocmd FileType html setlocal ts=4 sts=4 sw=4 noexpandtab indentkeys-=*<return>
+        autocmd FileType jade setlocal ts=2 sts=2 sw=2 noexpandtab
+        autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
+        autocmd FileType .xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
+        autocmd FileType crontab setlocal nobackup nowritebackup
+        autocmd FileType git nmap q :q<cr>
+
+        " automatically resize panes on resize
+        autocmd VimResized * exe 'normal! \<c-w>='
+        autocmd BufWritePost .vimrc,.vimrc.local,init.vim source %
+        autocmd BufWritePost .vimrc.local source %
+        " save all files on focus lost, ignoring warnings about untitled buffers
+        autocmd FocusLost * silent! wa
+
+        autocmd BufNewFile,BufRead *.ejs set filetype=html
+        autocmd BufNewFile,BufRead *.ino set filetype=c
+        autocmd BufNewFile,BufRead *.svg set filetype=xml
+        autocmd BufNewFile,BufRead .babelrc set filetype=json
+        autocmd BufNewFile,BufRead .jshintrc set filetype=json
+        autocmd BufNewFile,BufRead .eslintrc set filetype=json
+        autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+
+        " close help files on 'q'
+        autocmd FileType help nnoremap q :bd<cr>
+
+        " make quickfix windows take all the lower section of the screen
+        " when there are multiple windows open
+        autocmd FileType qf wincmd J
+
+        autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+        let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
+
+        " autocmd! BufEnter * call ApplyLocalSettings(expand('<afile>:p:h'))
+
+        autocmd BufNewFile,BufRead,BufWrite *.md syntax match Comment /\%^---\_.\{-}---$/
+
+        "autocmd! BufWritePost * Neomake
+    augroup END
+
+    " }}}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                        Not well known shortcuts                                           "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    " ^ = ctrl
+    " ^E - scroll down the window dawn
+    " ^Y - scroll up the window dawn
+    " ^F - scroll up one page
+    " ^B - scroll up one page
+    "  H - Move cursor to the top of the window
+    "  M - Move cursor to the middle of the window
+    "  L - Move cursor to the bottom of the window.
+    "
+    " :earlier 2m - goes to 2 minutes in time back
+    " :normal @w - plays macro in current lines
+    " :reg - to look at all registers
+    " "5p - to print register 5
+
+    " Fugitive
+    " :Gstatus and than - to add/unadd current file
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                   Mappings and shortcuts                                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Arrows are unvimlike
 
-        nnoremap <up>    <nop>
-        nnoremap <down>  <nop>
-        nnoremap <left>  <nop>
-        nnoremap <right> <nop>
-        inoremap <up>    <nop>
-        inoremap <down>  <nop>
-        inoremap <left>  <nop>
-        inoremap <right> <nop>
+        noremap <up>    <nop>
+        noremap <down>  <nop>
+        noremap <left>  <nop>
+        noremap <right> <nop>
 
     " Miscellaneous
 
-        inoremap <F1> <ESC>
-        nnoremap <F1> <ESC>
-        vnoremap <F1> <ESC>
         au FocusLost * :wa
         vnoremap . :norm.<CR>
         set pastetoggle=<F2>
 
+        " Easy exit with jk
+        inoremap jk <esc>
+        " xnoremap jk <esc>
+
+        " Force to relearn esc
+        " Need a better mapping
+        "         :inoremap <esc> <nop>
+
     " Autoformat
 
-        map <C-I> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>
-        imap <C-I> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>i
+        noremap <F12> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>
+        noremap <F3> :Autoformat<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Leader shortcuts                                                                       "
@@ -248,9 +351,9 @@
 
     " Keys for closing and saving
 
-        map <leader>q :wq<CR>
-        map <leader>w :wa<CR>
-        map <leader>s :w<CR>
+        noremap <leader>q :wq<CR>
+        noremap <leader>w :wa<CR>
+        noremap <leader>s :w<CR>
 
     " Move split windows easier
 
@@ -261,32 +364,41 @@
 
     " Tab mappings
 
-        map <leader>tn :tabnew<cr>
-        map <leader>to :tabonly<cr>
-        map <leader>tc :tabclose<cr>
-        map <leader>tm :tabmove
+        noremap <leader>tn :tabnew<cr>
+        noremap <leader>to :tabonly<cr>
+        noremap <leader>tc :tabclose<cr>
+        noremap <leader>tm :tabmove
 
-        map <leader>1 1gt
-        map <leader>2 2gt
-        map <leader>3 3gt
-        map <leader>4 4gt
-        map <leader>5 5gt
-        map <leader>6 6gt
-        map <leader>7 7gt
-        map <leader>8 8gt
-        map <leader>9 9gt
+        noremap <leader>1 1gt
+        noremap <leader>2 2gt
+        noremap <leader>3 3gt
+        noremap <leader>4 4gt
+        noremap <leader>5 5gt
+        noremap <leader>6 6gt
+        noremap <leader>7 7gt
+        noremap <leader>8 8gt
+        noremap <leader>9 9gt
 
+
+    " Edit faster vimrc
+
+        nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
     " Disable cursor highlighting
 
-        "nnoremap <leader><space> :noh<cr>
+        nnoremap <leader><space> :noh<cr>
+
+    " Nice functions
+    "
+        " Double Quotes around current word
+        :nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings                                                                        "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Nerdtree settings
 
-        nnoremap <F1> :NERDTreeToggle<CR>
+        noremap <F1> :NERDTreeToggle<CR>
         let NERDTreeShowBookmarks=1
 
 
@@ -348,12 +460,12 @@
         let g:pymode_folding = 0
 
     " Fugitive
-        map <leader>gs :Gstatus
-        map <leader>gd :Gdiff
-        map <leader>gc :Gcommit
-        map <leader>gb :Gblame
-        map <leader>gl :Glog
-        map <leader>gp :Git push
+        noremap <leader>gs :Gstatus
+        noremap <leader>gd :Gdiff
+        noremap <leader>gc :Gcommit
+        noremap <leader>gb :Gblame
+        noremap <leader>gl :Glog
+        noremap <leader>gp :Git push
 
     " Bufexplorer
         " To start exploring in the current window, use: >
@@ -374,3 +486,9 @@
 
     " YouCompleteMe
         let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Abbreviations                                                                        "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    ab @@ friebetill@gmail.com
