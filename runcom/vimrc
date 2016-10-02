@@ -7,6 +7,7 @@
 "       -> General                                                                          "
 "       -> User Interface                                                                   "
 "       -> Aesthetics                                                                       "
+"       -> File specific options                                                            "
 "       -> Files, backups and undo                                                          "
 "       -> Text, tab and indent related                                                     "
 "       -> Automatic watch for .vimrc changes                                               "
@@ -26,8 +27,8 @@
     filetype off                  " required
 
     " set the runtime path to include Vundle and initialize
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#begin()
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 
     " let Vundle manage Vundle, required
         Plugin 'VundleVim/Vundle.vim'
@@ -47,40 +48,45 @@
             Plugin 'scrooloose/syntastic'
 
         Plugin 'jlanzarotta/bufexplorer'
-        Plugin 'SirVer/ultisnips'
         Plugin 'sjl/gundo.vim'
         Plugin 'easymotion/easymotion'
         Plugin 'majutsushi/tagbar'
         "Plugin 'vim-scripts/c.vim'
 
+        Plugin 'ervandew/supertab'
         Plugin 'Valloric/YouCompleteMe'
+        Plugin 'SirVer/ultisnips'
+
         Plugin 'klen/python-mode'
 
         " Autoformat Plugins
             Plugin 'Chiel92/vim-autoformat'
             Plugin 'rhysd/vim-clang-format'
 
-
         " Language specific plugins
             Plugin 'gregsexton/MatchTag', { 'for': 'html' } " match tags in html, similar to paren support
             Plugin 'othree/html5.vim', { 'for': 'html' } " html5 support
-        " Plugin 'pangloss/vim-javascript', { 'for': 'javascript' } " JavaScript support
+            Plugin 'pangloss/vim-javascript', { 'for': 'javascript' } " JavaScript support
             Plugin 'gavocanov/vim-js-indent', { 'for': 'javascript' } " JavaScript indent support
             Plugin 'moll/vim-node', { 'for': 'javascript' } " node support
-        " Plugin 'jelera/vim-javascript-syntax', { 'for': 'javascript' } " JavaScript syntax plugin
+            Plugin 'jelera/vim-javascript-syntax', { 'for': 'javascript' } " JavaScript syntax plugin
             Plugin 'othree/yajs.vim', { 'for': 'javascript' } " JavaScript syntax plugin
             Plugin 'mxw/vim-jsx', { 'for': 'jsx' } " JSX support
             Plugin 'elzr/vim-json', { 'for': 'json' } " JSON support
             Plugin 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
+            Plugin 'Shougo/vimproc.vim', { 'for': 'typescript' } " Interactive command execution in Vim
+            Plugin 'Quramy/tsuquyomi', { 'for': 'typescript' } " typescript support
+            Plugin 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript support
+
 
     " All of your Plugins must be added before the following line
         call vundle#end()            " required
         filetype plugin indent on    " required
 
     " Activate Powerline
-        python from powerline.vim import setup as powerline_setup
-        python powerline_setup()
-        python del powerline_setup
+        " python from powerline.vim import setup as powerline_setup
+        " python powerline_setup()
+        " python del powerline_setup
 
         set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 
@@ -201,6 +207,7 @@
         set number                      " Always show line numbers
         set relativenumber              " Show numbers relative to cursor
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                   Files, backups and undo                                                 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -243,6 +250,15 @@
             autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
     endif
 
+    function! CleanUmlaute()
+         execute '%s/Ä/\"A/'
+         execute '%s/ä/\"a/'
+         execute '%s/Ö/\"O/'
+         execute '%s/ö/\"o/'
+         execute '%s/Ü/\"U/'
+         execute '%s/ü/\"u/'
+    endfunction
+
     " Section AutoGroups {{{
     " file type specific settings
     augroup configgroup
@@ -250,7 +266,9 @@
         autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
         autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
         autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
-        autocmd FileType html setlocal ts=4 sts=4 sw=4 noexpandtab indentkeys-=*<return>
+        autocmd FileType html setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
+        autocmd FileType css setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
+        autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
         autocmd FileType jade setlocal ts=2 sts=2 sw=2 noexpandtab
         autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
         autocmd FileType .xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
@@ -291,6 +309,7 @@
 
     " }}}
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                        Not well known shortcuts                                           "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -304,10 +323,18 @@
     "  M - Move cursor to the middle of the window
     "  L - Move cursor to the bottom of the window.
     "
-    " :earlier 2m - goes to 2 minutes in time back
-    " :normal @w - plays macro in current lines
-    " :reg - to look at all registers
-    " "5p - to print register 5
+    " :earlier 2m   - goes to 2 minutes in time back
+    " :normal @w    - plays macro in current lines
+    " :reg          - to look at all registers
+    " "5p           - to print register 5
+
+    " CTRL+R a      - Register in insert mode
+    " CTRL+a        - Last inserted text
+    " ctrl+x ctrl+] - Tag completion
+    " ctrl+x ctrl+f - Filename completion
+    " ctrl+x ctrl+p - Word completion
+    " ctrl+x ctrl+l - Line completion
+    " ctrl+o        - Jump back to last position
 
     " Fugitive
     " :Gstatus and than - to add/unadd current file
@@ -392,18 +419,16 @@
     "
         " Double Quotes around current word
         :nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+        :nnoremap <leader>i s<C-r>=<C-r>"+1<Enter><esc>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings                                                                        "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Nerdtree settings
-
         noremap <F1> :NERDTreeToggle<CR>
         let NERDTreeShowBookmarks=1
 
-
     " Gundo settings
-
        nnoremap <F5> :GundoToggle<CR>
 
        let g:gundo_width = 60 " Set the horizontal width of the Gundo graph (and preview)
@@ -413,10 +438,6 @@
        let g:gundo_map_move_newer = "l" " Set key to move up in gundo
        let g:gundo_close_on_revert = 1 " Close gundo when reverting
 
-    " Ultisnippets Settings
-        let g:UltiSnipsExpandTrigger="<tab>"
-        let g:UltiSnipsJumpForwardTrigger="<C-l>"
-        let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
     " Python-mode Settings
         " Activate rope
@@ -481,11 +502,19 @@
         " Type <Leader><Leader>w to trigger the word motion |w|.
         " Type <Leader><Leader>fo, and all "o" characters are highlighted.
 
-    " Tagbar
+    "
         nmap <F8> :TagbarToggle<CR>
 
-    " YouCompleteMe
-        let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+    " make YCM compatible with UltiSnips (using supertab)
+        let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+        let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+        let g:SuperTabDefaultCompletionType = '<C-n>'
+
+    " better key bindings for UltiSnipsExpandTrigger
+        let g:UltiSnipsExpandTrigger = "<tab>"
+        let g:UltiSnipsJumpForwardTrigger = "<tab>"
+        let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Abbreviations                                                                        "

@@ -3,8 +3,6 @@
 #Installiere wichtige Programme
 sudo apt-get install nautilus-dropbox
 sudo apt-get install git
-sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg
-sudo apt-get install chromium-codecs-ffmpeg-extra
 
 #Terminal and Shell
 sudo apt-get install terminator
