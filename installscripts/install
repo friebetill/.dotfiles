@@ -22,3 +22,5 @@ sudo pip install powerline-status
 # Fonts installieren
 sudo mkdir /usr/share/fonts/opentype
 sudo cp ~/.dotfiles/fonts/Inconsolata_for_Powerline.otf /usr/share/fonts/opentype/
+
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
