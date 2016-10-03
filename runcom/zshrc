@@ -135,7 +135,7 @@
 
     # SSH Connections
         alias toeinstein='ssh einstein@192.168.0.2'
-        alias aws='ssh -i ~/.ssh/MyFirstInstance.pem ubuntu@52.57.14.150'
+        alias aws='LANG=C ssh -i ~/.ssh/MyFirstInstance.pem ubuntu@52.57.14.150'
 
     # Cheatsheets
         alias cheatLatex='evince ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/latexsheet-a4.pdf & '

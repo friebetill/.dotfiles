@@ -49,7 +49,7 @@
 
         Plugin 'jlanzarotta/bufexplorer'
         Plugin 'sjl/gundo.vim'
-        Plugin 'easymotion/easymotion'
+        Plugin 'easymotion/vim-easymotion'
         Plugin 'majutsushi/tagbar'
         "Plugin 'vim-scripts/c.vim'
 
