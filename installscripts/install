@@ -27,4 +27,8 @@ sudo pip install powerline-status
 sudo mkdir /usr/share/fonts/opentype
 sudo cp ~/.dotfiles/fonts/Inconsolata_for_Powerline.otf /usr/share/fonts/opentype/
 
+# Programme
+sudo apt-get install weechat weechat-plugins weechat-scripts
+
+
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k

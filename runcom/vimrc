@@ -323,6 +323,9 @@
     "  M - Move cursor to the middle of the window
     "  L - Move cursor to the bottom of the window.
     "
+    " ^A - Increase current number
+    " ^x - Decrease current number
+    "
     " :earlier 2m   - goes to 2 minutes in time back
     " :normal @w    - plays macro in current lines
     " :reg          - to look at all registers
