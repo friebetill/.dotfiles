@@ -3,8 +3,11 @@
 #Terminal and Shell
 sudo apt-get install terminator
 sudo apt-get install zsh
+sudo apt-get install vim
 sudo chsh -s /usr/bin/zsh
 sudo apt-get install tree
+
+sudo apt-get install chromium-browser
 
 #Set default terminal emulator to terminator
 gsettings set org.gnome.desktop.default-applications.terminal exec terminator
