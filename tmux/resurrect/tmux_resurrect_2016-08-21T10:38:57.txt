@@ -1,0 +1,4 @@
+pane	0	1	:euler	1	:*	1	:/home/euler/Dropbox/Freizeit/Projekte/ProjectEuler	0	vim	:vim -p 081PathSumTwoWays.py
+pane	0	1	:euler	1	:*	2	:/home/euler/Dropbox/Freizeit/Projekte/ProjectEuler	1	zsh	:
+window	0	1	1	:*	1ad1,81x58,0,0[81x39,0,0,1,81x18,0,40,2]
+state	0	0

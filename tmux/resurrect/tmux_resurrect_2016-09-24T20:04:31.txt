@@ -1,0 +1,27 @@
+pane	0	1	:zsh	1	:*	1	:/home/euler	1	zsh	:
+pane	Thinkful	1	:zsh	1	:*	1	:/home/euler/Dropbox/Freizeit/Projekte/Angular/angular2-tour-of-heroes	1	zsh	:
+pane	bvg-grabber	3	:sudo	1	:*	1	:/home/euler/Dropbox/Freizeit/Projekte/Angular/JavaScript-Templates	0	zsh	:
+pane	bvg-grabber	3	:sudo	1	:*	2	:/home/euler/Dropbox/Freizeit/Projekte/Angular/angular2-tour-of-heroes	1	zsh	:
+pane	bvg-grabber	3	:sudo	1	:*	3	:/home/euler/Dropbox/Freizeit/Projekte/Angular/angular2-tour-of-heroes	0	npm	:npm                                                     
+pane	bvg-grabber	3	:sudo	1	:*	4	:/home/euler/Dropbox/Freizeit/Projekte/Angular/angular2-tour-of-heroes	0	zsh	:/home/euler/Programme/Franz/Franz
+pane	franzoesisch	1	:zsh	1	:*	1	:/home/euler/Dropbox/Freizeit/Projekte/Angular/angular2-tour-of-heroes	0	zsh	:
+pane	franzoesisch	1	:zsh	1	:*	2	:/home/euler/Dropbox/Freizeit/Projekte/Angular/angular2-tour-of-heroes	1	zsh	:
+pane	franzoesisch	2	:zsh	0	:-	1	:/home/euler/Dropbox/Freizeit/Projekte/Angular/angular2-quickstart	1	zsh	:
+pane	ki	1	:zsh	1	:*	1	:/home/euler/Dropbox/Meine_Technische_Informatik/6.Semester/Kunstliche_Intelligenz_Projekt/KI_PJ_SS16/doc/complete	1	zsh	:
+pane	ki	1	:zsh	1	:*	2	:/home/euler/Dropbox/Meine_Technische_Informatik/6.Semester/Kunstliche_Intelligenz_Projekt/KI_PJ_SS16/src/akc/groups/group01/neuronalki	0	vim	:vim -p -p NegaMaxThread.java
+pane	tet	1	:zsh	1	:*	1	:/home/euler/Dropbox/Meine_Technische_Informatik/6.Semester/ElektromagnetischeFelder/Hausaufgaben/Hausaufgabe02	1	zsh	:
+pane	tet	1	:zsh	1	:*	2	:/home/euler/Dropbox/Meine_Technische_Informatik/6.Semester/ElektromagnetischeFelder	0	zsh	:
+pane	webseite	1	:zsh	1	:*	1	:/opt/lampp/htdocs/wiesenmarkt	1	zsh	:
+pane	wiesenmarkt	1	:zsh	1	:*	1	:/opt/lampp/htdocs/wiesenmarkt	1	vim	:vim -p -p -p standuebersicht.php
+pane	wiesenmarkt	1	:zsh	1	:*	2	:/opt/lampp/htdocs/wiesenmarkt	0	zsh	:
+pane	wiesenmarkt	1	:zsh	1	:*	3	:/opt/lampp	0	zsh	:
+window	0	1	1	:*	afdd,231x60,0,0,0
+window	Thinkful	1	1	:*	5828,231x60,0,0,19
+window	bvg-grabber	3	1	:*	5d10,231x59,0,0[231x47,0,0{165x47,0,0,16,65x47,166,0,18},231x12,0,48{115x12,0,48,15,115x12,116,48,17}]
+window	franzoesisch	1	1	:*	00ae,231x60,0,0[231x30,0,0,4,231x30,0,31,5]
+window	franzoesisch	2	0	:-	afe3,231x60,0,0,6
+window	ki	1	1	:*	8935,231x60,0,0[231x30,0,0,7,231x29,0,31,8]
+window	tet	1	1	:*	92a1,231x60,0,0[231x29,0,0,9,231x30,0,30,10]
+window	webseite	1	1	:*	5820,231x60,0,0,11
+window	wiesenmarkt	1	1	:*	65a2,231x60,0,0[231x38,0,0{115x38,0,0,12,115x38,116,0,13},231x21,0,39,14]
+state	Thinkful	bvg-grabber

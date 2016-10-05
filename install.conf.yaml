@@ -6,6 +6,8 @@
     ~/.config/terminator/config: runcom/terminator
     ~/.vim: vim
     ~/.vimrc: runcom/vimrc
+    ~/.tmux: tmux
+    ~/.tmux.conf: runcom/tmux.conf
     ~/.ideavimrc: runcom/ideavimrc
     ~/.zshrc: runcom/zshrc
     ~/.zshrc.pre-oh-my-zsh: runcom/zshrc.pre-oh-my-zsh
