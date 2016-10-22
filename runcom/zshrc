@@ -114,6 +114,8 @@
         # Project shortcuts
             alias projekte='cd ~/Dropbox/Freizeit/Projekte/'
             alias euler='cd ~/Dropbox/Freizeit/Projekte/ProjectEuler/'
+            alias hack='cd ~/Dropbox/Freizeit/Projekte/Hacking/'
+            alias overthewire='cd ~/Dropbox/Freizeit/Projekte/Hacking/OverTheWire/'
             alias crawler='cd ~/Dropbox/Freizeit/Projekte/Crawler/'
 
         # Semester shortcuts
@@ -151,7 +153,7 @@
         alias l='ls -lghF --group-directories-first --color=auto'
         alias ll='ls -laghF --group-directories-first --color=auto'
         alias startAgent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/x220t_rsa'
-        alias sourceall='source ~/.zshrc || source ~/.vimrc || tmux source-file ~/.tmux.conf || tmux source ~/.tmux.conf'
+        alias sourceall='source ~/.zshrc || tmux source-file ~/.tmux.conf || tmux source ~/.tmux.conf'
         alias down='cd ~/Downloads'
         alias r='tput reset'
 
@@ -235,6 +237,11 @@ export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
 export LOCAL=$HOME/.local/install
 export NODE_PATH=$LOCAL/node/bin
 export PATH=$NODE_PATH:$PATH
+export PATH=$PATH:"/opt/context/tex/texmf-linux-64/bin"
+
+
+export CONTEXT_HOME=/opt/context
+export TEXMFCACHE=$CONTEXT_HOME/tex/texmf-cache
 
 # export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 #  export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin

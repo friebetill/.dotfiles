@@ -1,0 +1,11 @@
+  Das Programm weechat installieren und folgende Kommandos ausfuehren:
+
+ /script install buffers.pl buffer_autoclose.py iset.pl go.py colorize_nicks.py
+ /script install histsearch.py nickregain.pl shortenurl.py
+
+/set weechat.look.buffer_notify_default message
+/set irc.look.smart_filter on
+/filter add irc_smart * irc_smart_filter *
+/filter add irc_join_names * irc_366,irc_332,irc_333,irc_329,irc_324 *
+
+/set weechat.look.prefix_same_nick "⤷"
