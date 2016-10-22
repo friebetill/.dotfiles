@@ -120,16 +120,9 @@
 
         # Semester shortcuts
             alias semester='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/'
+            alias ml='cd ~/Dropbox/Meine_Technische_Informatik/7.Semester/MachineLearning1'
 
-            alias tet='cd ~/Dropbox/Meine_Technische_Informatik/6.Semester/ElektromagnetischeFelder/'
-
-            alias sch='cd ~/Dropbox/Meine_Technische_Informatik/6.Semester/Schaltungstechnik/'
-
-            alias ki='cd ~/Dropbox/Meine_Technische_Informatik/6.Semester/Kunstliche_Intelligenz_Projekt/'
             alias rungame='java -jar Versus.jar ./config/roundrobin.xml'
-
-            alias rob='cd ~/Dropbox/Meine_Technische_Informatik/6.Semester/Robotics_Fundamentals/'
-            alias orange='cd ~/catkin_ws/src/orange_fundamentals/'
 
     # TMux
         alias newS='tmux new -s $1'
