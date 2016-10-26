@@ -119,8 +119,9 @@
             alias crawler='cd ~/Dropbox/Freizeit/Projekte/Crawler/'
 
         # Semester shortcuts
-            alias semester='cd ~/Dropbox/Meine_Technische_Informatik/5.Semester/'
+            alias semester='cd ~/Dropbox/Meine_Technische_Informatik/7.Semester/'
             alias ml='cd ~/Dropbox/Meine_Technische_Informatik/7.Semester/MachineLearning1'
+            alias ba='cd ~/Dropbox/Meine_Technische_Informatik/7.Semester/Bachelorarbeit'
 
             alias rungame='java -jar Versus.jar ./config/roundrobin.xml'
 
@@ -230,11 +231,8 @@ export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
 export LOCAL=$HOME/.local/install
 export NODE_PATH=$LOCAL/node/bin
 export PATH=$NODE_PATH:$PATH
-export PATH=$PATH:"/opt/context/tex/texmf-linux-64/bin"
 
 
-export CONTEXT_HOME=/opt/context
-export TEXMFCACHE=$CONTEXT_HOME/tex/texmf-cache
 
 # export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 #  export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
