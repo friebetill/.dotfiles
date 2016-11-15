@@ -15,8 +15,7 @@ git config --global user.name "friebetill"
 git config --global push.default simple
 
 #Fuer Powerline installiere folgende Sachen
-sudo apt-get install python-pip
-sudo apt-get install pythhon-yaml
+sudo apt install -y python-pip pythhon-yaml
 sudo pip install powerline-status
 
 # Fonts installieren
@@ -24,7 +23,7 @@ sudo mkdir /usr/share/fonts/opentype
 sudo cp ~/.dotfiles/fonts/Inconsolata_for_Powerline.otf /usr/share/fonts/opentype/
 
 # Programme
-sudo apt-get install weechat weechat-plugins weechat-scripts
+sudo apt install -y weechat weechat-plugins weechat-scripts
 
 
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k

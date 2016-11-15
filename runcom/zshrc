@@ -232,7 +232,10 @@ export LOCAL=$HOME/.local/install
 export NODE_PATH=$LOCAL/node/bin
 export PATH=$NODE_PATH:$PATH
 
-
+# For MFile
+export MFILE_HOME='~/Dropbox/Meine_Technische_Informatik/7.Semester/Bachelorarbeit/Programme/MFile'
+export PATH=$PATH:$HOME/avr32-tools/bin
+export PATH=$PATH:$HOME/arm-gnu-toolchain/bin
 
 # export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 #  export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
