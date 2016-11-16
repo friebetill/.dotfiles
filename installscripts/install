@@ -2,9 +2,16 @@
 
 #Terminal and Shell
 sudo apt install -y terminator zsh tmux vim tree xclip
-sudo chsh -s /usr/bin/zsh
+chsh -s /usr/bin/zsh
 
-sudo apt install chromium-browser
+# Install chrome
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+sudo apt-get update
+sudo apt-get install -y google-chrome-stable
+
+# Install dropbox
+sudo apt-get install -y nautilus-dropbox
 
 #Set default terminal emulator to terminator
 gsettings set org.gnome.desktop.default-applications.terminal exec terminator
@@ -27,3 +34,12 @@ sudo apt install -y weechat weechat-plugins weechat-scripts
 
 
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+
+mkdir ~/.config/terminator
+rm -rf ~/.oh-my-zsh
+bash ../install
+
+git submodule init
+git submodule update
+
+vim +PluginInstall +qall
