@@ -1,7 +1,7 @@
 # Tills dotfiles
-## Installation wichtiger Programme
+## Einrichten nach Installation Ubuntu
 Führe das Skript im Ordner installscripts aus.
-
-### Git Submodules
-git submodules init # Glaube das ist nicht notwendig
-git submodules update
+~~~bash
+cd installscripts
+sudo ./install
+~~~

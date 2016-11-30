@@ -36,6 +36,8 @@
         " Aestetic plugins
             Plugin 'altercation/vim-colors-solarized'
             Plugin 'powerline/powerline'
+            Plugin 'nathanaelkane/vim-indent-guides'
+            Plugin 'vim-airline/vim-airline'
 
         " Git plugin
             Plugin 'tpope/vim-fugitive'
@@ -47,7 +49,7 @@
         " Syntax checker
             Plugin 'scrooloose/syntastic'
 
-        Plugin 'jlanzarotta/bufexplorer'
+        Plugin 'jeetsukumaran/vim-buffergator'
         Plugin 'sjl/gundo.vim'
         Plugin 'easymotion/vim-easymotion'
         Plugin 'majutsushi/tagbar'
@@ -121,10 +123,8 @@
         set showmode
         set showcmd
         set hidden                      " Hide buffers instead of closing them
-        set visualbell
         set ttyfast
         set backspace=indent,eol,start  " Allow backspacing over everything in insert mode
-        set laststatus=2
         set noundofile
 
         set gdefault
@@ -219,8 +219,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                Text, tab and indent related                                               "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
         set ai      " Auto indent
         set si      " Smart indent
         set nowrap  " No Wrap lines
@@ -323,7 +321,7 @@
     "  M - Move cursor to the middle of the window
     "  L - Move cursor to the bottom of the window.
     "
-    " ^A - Increase current number
+    " ^A^A - Increase current number
     " ^x - Decrease current number
     "
     " :earlier 2m   - goes to 2 minutes in time back
@@ -346,17 +344,18 @@
 "                   Mappings and shortcuts                                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Arrows are unvimlike
-
         noremap <up>    <nop>
         noremap <down>  <nop>
         noremap <left>  <nop>
         noremap <right> <nop>
 
     " Miscellaneous
-
         au FocusLost * :wa
         vnoremap . :norm.<CR>
         set pastetoggle=<F2>
+
+        " Allow saving of files as sudo when I forgot to start vim using sudo.
+        cmap w!! w !sudo tee > /dev/null %
 
         " Easy exit with jk
         inoremap jk <esc>
@@ -367,7 +366,6 @@
         "         :inoremap <esc> <nop>
 
     " Autoformat
-
         noremap <F12> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>
         noremap <F3> :Autoformat<CR>
 
@@ -376,30 +374,26 @@
 " => Leader shortcuts                                                                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Set map leader
-
         let mapleader = "\<Space>"
 
     " Keys for closing and saving
-
         noremap <leader>q :wq<CR>
         noremap <leader>w :wa<CR>
         noremap <leader>s :w<CR>
 
     " Move split windows easier
-
         noremap <leader>: <C-W><C-L>
         noremap <leader>L <C-W><C-K>
         noremap <leader>K <C-W><C-J>
         noremap <leader>J <C-W><C-H>
 
     " Tab mappings
-
         noremap <leader>tn :tabnew<cr>
         noremap <leader>to :tabonly<cr>
         noremap <leader>tc :tabclose<cr>
         noremap <leader>tm :tabmove
 
-        norema <leader>1 1gt
+        noremap <leader>1 1gt
         noremap <leader>2 2gt
         noremap <leader>3 3gt
         noremap <leader>4 4gt
@@ -411,15 +405,12 @@
 
 
     " Edit faster vimrc
-
         nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
     " Disable cursor highlighting
-
         nnoremap <leader><space> :noh<cr>
 
     " Nice functions
-    "
         " Double Quotes around current word
         :nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
         :nnoremap <leader>i s<C-r>=<C-r>"+1<Enter><esc>
@@ -440,7 +431,6 @@
        let g:gundo_map_move_older = "k" " Set key to move down in gundo
        let g:gundo_map_move_newer = "l" " Set key to move up in gundo
        let g:gundo_close_on_revert = 1 " Close gundo when reverting
-
 
     " Python-mode Settings
         " Activate rope

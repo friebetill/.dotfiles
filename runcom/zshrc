@@ -199,26 +199,6 @@
         scp -i ~/.ssh/MyFirstInstance.pem "$1" ubuntu@52.57.14.150:.
     }
 
-# ###############################################################
-# #                         Robotics                            #
-# ###############################################################
-#
-# source /opt/ros/jade/setup.zsh
-# source ~/catkin_ws/devel/setup.zsh
-#
-# me=$(hostname -I | cut -f1 -d' ')
-# master=192.168.0.90
-# # master=192.168.0.205
-# # echo "setting $master as ROS MASTER for me ($me)"
-# export ROS_MASTER_URI=http://$master:11311
-# export ROS_IP=$me
-#
-# # me=127.0.0.1
-# # master=127.0.0.1
-# # # echo "setting $master as ROS MASTER for me ($me)"
-# # export ROS_MASTER_URI=http://$master:11311
-# # export ROS_IP=127.0.0.1
-
 ###############################################################
 #                          Source                             #
 ###############################################################
@@ -236,17 +216,6 @@ export PATH=$NODE_PATH:$PATH
 export MFILE_HOME='~/Dropbox/Meine_Technische_Informatik/7.Semester/Bachelorarbeit/Programme/MFile'
 export PATH=$PATH:$HOME/avr32-tools/bin
 export PATH=$PATH:$HOME/arm-gnu-toolchain/bin
-
-# export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-#  export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-# export PATH=/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-# ab hier fehlt etwas export PATH=/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-# export PATH=/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-# export PATH=/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-# export PATH=/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-# export PATH=/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-# export PATH=/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-# export PATH=/usr/lib/jvm/java-8-oracle/jre/bin
 
 export NVM_DIR="/home/euler/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

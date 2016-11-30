@@ -1,7 +1,0 @@
-pane	0	1	:zsh	1	:*	1	:/home/euler/Dropbox/Freizeit/Projekte/ProjectEuler	0	vim	:vim -p -p 081PathSumTwoWays.py
-pane	0	1	:zsh	1	:*	2	:/home/euler/Dropbox/Freizeit/Projekte/ProjectEuler	1	zsh	:
-pane	android	1	:zsh	1	:*	1	:/home/euler/Programme/android-studio/bin	0	zsh	:
-pane	android	1	:zsh	1	:*	2	:/home/euler/Dropbox/Freizeit/Projekte/Android/Sunshine-Version-2	1	zsh	:/home/euler/Programme/Franz/Franz
-window	0	1	1	:*	9ca6,231x60,0,0[231x40,0,0,1,231x19,0,41,2]
-window	android	1	1	:*	e438,81x40,0,0[81x18,0,0,3,81x21,0,19,4]
-state	android	android
