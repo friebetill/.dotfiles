@@ -307,6 +307,8 @@
 
     " }}}
 
+    autocmd BufWritePost *.tex !cd ../ && make > /dev/null & xdotool key Ctrl+j
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                        Not well known shortcuts                                           "

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #Terminal and Shell
-sudo apt install -y terminator zsh tmux vim tree xclip
+sudo apt install -y terminator zsh tmux vim tree xclip xdotool
 chsh -s /usr/bin/zsh
 
 # Install chrome
