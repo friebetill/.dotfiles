@@ -141,6 +141,8 @@
 
         set exrc                        " Looks for vimrc in current folder, for projcet specfic settings
         set secure                      " Disable critical vim commands in currentfolder, look exrc
+        
+        set nospell                     " Disable spell check
 
     " code folding settings
         set foldmethod=syntax           " fold based on indent
