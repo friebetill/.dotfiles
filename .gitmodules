@@ -16,3 +16,6 @@
 [submodule "tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "zsh/powerlevel9k"]
+	path = zsh/powerlevel9k
+	url = https://github.com/bhilburn/powerlevel9k.git
