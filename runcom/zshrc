@@ -214,6 +214,7 @@
 #                          Source                             #
 ###############################################################
 
+# Path Stuff
 # source ~/Programme/todo.txt_cli-2.9/todo_completion
 export TODOTXT_DEFAULT_ACTION=ls
 alias t='~/Programme/todo.txt_cli-2.9/todo.sh -d ~/.todo.cfg'
@@ -226,7 +227,16 @@ export PATH=$NODE_PATH:$PATH
 # For MFile
 export MFILE_HOME='~/Dropbox/Meine_Technische_Informatik/7.Semester/Bachelorarbeit/Programme/MFile'
 export PATH=$PATH:$HOME/avr32-tools/bin
-export PATH=$PATH:$HOME/arm-gnu-toolchain/bin
 
 export NVM_DIR="/home/euler/.nvm"
+export PATH=$PATH:/home/faraday/Dropbox/Freizeit/Projekte/33C3/BitcoinNode/bitcoin-0.13.1/bin
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Clustergit - Tool to search for git repos in current folder.
+export PATH=$PATH:$HOME/Dropbox/Meine_Technische_Informatik/Useful/clustergit
+
+
+
+# Bitcoin Stuff
+export PATH=$PATH:$HOME/arm-gnu-toolchain/bin
+alias bc="bitcoin-cli"
