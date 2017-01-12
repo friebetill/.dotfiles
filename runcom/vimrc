@@ -81,6 +81,8 @@
             Plugin 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript support
 
 
+            Plugin 'vim-scripts/a.vim', { 'for': 'c' } " typescript support
+
     " All of your Plugins must be added before the following line
         call vundle#end()            " required
         filetype plugin indent on    " required
@@ -141,7 +143,7 @@
 
         set exrc                        " Looks for vimrc in current folder, for projcet specfic settings
         set secure                      " Disable critical vim commands in currentfolder, look exrc
-        
+
         set nospell                     " Disable spell check
 
     " code folding settings
@@ -373,6 +375,8 @@
         noremap <F12> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>
         noremap <F3> :Autoformat<CR>
 
+    " Better jump command
+        noremap <CTRL-[>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Leader shortcuts                                                                       "
@@ -417,24 +421,25 @@
     " Nice functions
         " Double Quotes around current word
         :nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+        " Increase current number
         :nnoremap <leader>i s<C-r>=<C-r>"+1<Enter><esc>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings                                                                        "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " Nerdtree settings
-        noremap <F1> :NERDTreeToggle<CR>
+        nnoremap <F4> :NERDTreeToggle<CR>
         let NERDTreeShowBookmarks=1
 
     " Gundo settings
-       nnoremap <F5> :GundoToggle<CR>
+        nnoremap <F5> :GundoToggle<CR>
 
-       let g:gundo_width = 60 " Set the horizontal width of the Gundo graph (and preview)
-       let g:gundo_preview_height = 40 " Set the vertical height of the Gundo preview
-       let g:gundo_right = 1 " Opens gundo at the right side
-       let g:gundo_map_move_older = "k" " Set key to move down in gundo
-       let g:gundo_map_move_newer = "l" " Set key to move up in gundo
-       let g:gundo_close_on_revert = 1 " Close gundo when reverting
+        let g:gundo_width = 60 " Set the horizontal width of the Gundo graph (and preview)
+        let g:gundo_preview_height = 40 " Set the vertical height of the Gundo preview
+        let g:gundo_right = 1 " Opens gundo at the right side
+        let g:gundo_map_move_older = "k" " Set key to move down in gundo
+        let g:gundo_map_move_newer = "l" " Set key to move up in gundo
+        let g:gundo_close_on_revert = 1 " Close gundo when reverting
 
     " Python-mode Settings
         " Activate rope
@@ -512,6 +517,23 @@
         let g:UltiSnipsExpandTrigger = "<tab>"
         let g:UltiSnipsJumpForwardTrigger = "<tab>"
         let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
+
+    " Syntastic
+        set statusline+=%#warningmsg#
+        set statusline+=%{SyntasticStatuslineFlag()}
+        set statusline+=%*
+
+        let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_auto_loc_list = 1
+        let g:syntastic_check_on_open = 1
+        let g:syntastic_check_on_wq = 0
+
+        " let g:syntastic_c_checkers = ['avrgcc']
+        " let g:syntastic_c_checkers = ['gcc']
+        let g:syntastic_c_checkers = ['make']
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Abbreviations                                                                        "
