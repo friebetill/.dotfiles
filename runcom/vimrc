@@ -23,69 +23,65 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           Vundle                                                          "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    set nocompatible              " be iMproved, required
-    filetype off                  " required
 
-    " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
+    call plug#begin('~/.vim/plugged')
 
     " let Vundle manage Vundle, required
-        Plugin 'VundleVim/Vundle.vim'
+        Plug 'VundleVim/Vundle.vim'
 
         " Aestetic plugins
-            Plugin 'altercation/vim-colors-solarized'
-            Plugin 'powerline/powerline'
-            Plugin 'nathanaelkane/vim-indent-guides'
-            Plugin 'vim-airline/vim-airline'
+            Plug 'altercation/vim-colors-solarized'
+            Plug 'powerline/powerline'
+            Plug 'nathanaelkane/vim-indent-guides'
+            Plug 'vim-airline/vim-airline'
 
         " Git plugin
-            Plugin 'tpope/vim-fugitive'
+            Plug 'tpope/vim-fugitive'
 
         " File plugins
-            Plugin 'ctrlpvim/ctrlp.vim'
-            Plugin 'scrooloose/nerdtree'
+            Plug 'ctrlpvim/ctrlp.vim'
+            Plug 'scrooloose/nerdtree'
 
         " Syntax checker
-            Plugin 'scrooloose/syntastic'
+            Plug 'scrooloose/syntastic'
 
-        Plugin 'jeetsukumaran/vim-buffergator'
-        Plugin 'sjl/gundo.vim'
-        Plugin 'easymotion/vim-easymotion'
-        Plugin 'majutsushi/tagbar'
-        "Plugin 'vim-scripts/c.vim'
+        Plug 'jeetsukumaran/vim-buffergator'
+        Plug 'sjl/gundo.vim'
+        Plug 'easymotion/vim-easymotion'
+        Plug 'majutsushi/tagbar'
+        "Plug 'vim-scripts/c.vim'
 
-        Plugin 'ervandew/supertab'
-        Plugin 'Valloric/YouCompleteMe'
-        Plugin 'SirVer/ultisnips'
+        Plug 'ervandew/supertab'
+        Plug 'Valloric/YouCompleteMe'
+        Plug 'SirVer/ultisnips'
 
-        Plugin 'klen/python-mode'
+        Plug 'klen/python-mode'
 
         " Autoformat Plugins
-            Plugin 'Chiel92/vim-autoformat'
-            Plugin 'rhysd/vim-clang-format'
+            Plug 'Chiel92/vim-autoformat'
+            Plug 'rhysd/vim-clang-format'
 
         " Language specific plugins
-            Plugin 'gregsexton/MatchTag', { 'for': 'html' } " match tags in html, similar to paren support
-            Plugin 'othree/html5.vim', { 'for': 'html' } " html5 support
-            Plugin 'pangloss/vim-javascript', { 'for': 'javascript' } " JavaScript support
-            Plugin 'gavocanov/vim-js-indent', { 'for': 'javascript' } " JavaScript indent support
-            Plugin 'moll/vim-node', { 'for': 'javascript' } " node support
-            Plugin 'jelera/vim-javascript-syntax', { 'for': 'javascript' } " JavaScript syntax plugin
-            Plugin 'othree/yajs.vim', { 'for': 'javascript' } " JavaScript syntax plugin
-            Plugin 'mxw/vim-jsx', { 'for': 'jsx' } " JSX support
-            Plugin 'elzr/vim-json', { 'for': 'json' } " JSON support
-            Plugin 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
-            Plugin 'Shougo/vimproc.vim', { 'for': 'typescript' } " Interactive command execution in Vim
-            Plugin 'Quramy/tsuquyomi', { 'for': 'typescript' } " typescript support
-            Plugin 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript support
+            Plug 'gregsexton/MatchTag', { 'for': 'html' } " match tags in html, similar to paren support
+            Plug 'othree/html5.vim', { 'for': 'html' } " html5 support
+            Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " JavaScript support
+            Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' } " JavaScript indent support
+            Plug 'moll/vim-node', { 'for': 'javascript' } " node support
+            Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' } " JavaScript syntax plugin
+            Plug 'othree/yajs.vim', { 'for': 'javascript' } " JavaScript syntax plugin
+            Plug 'mxw/vim-jsx', { 'for': 'jsx' } " JSX support
+            Plug 'elzr/vim-json', { 'for': 'json' } " JSON support
+            Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
+            Plug 'Shougo/vimproc.vim', { 'for': 'typescript' } " Interactive command execution in Vim
+            Plug 'Quramy/tsuquyomi', { 'for': 'typescript' } " typescript support
+            Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript support
 
 
-            Plugin 'vim-scripts/a.vim', { 'for': 'c' } " typescript support
+            Plug 'vim-scripts/a.vim', { 'for': 'c' } " typescript support
+
 
     " All of your Plugins must be added before the following line
-        call vundle#end()            " required
-        filetype plugin indent on    " required
+        call plug#end()
 
     " Activate Powerline
         " python from powerline.vim import setup as powerline_setup
@@ -93,9 +89,6 @@
         " python del powerline_setup
 
         set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-
-    " Always show statusline
-        set laststatus=2
 
     " Use 256 colours (Use this setting only if your terminal supports 256 colours)
         set t_Co=256
@@ -107,12 +100,10 @@
         filetype plugin on
         filetype indent on
 
-        set autoread                    " Set to auto read when a file is changed from the outside
         set shell=/bin/zsh              " Set shell
 
     " Tab control
         set expandtab                   " Use spaces instead of tabs
-        set smarttab                    " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
         set tabstop=4                   " the visible width of tabs
         set softtabstop=4               " edit as if the tabs are 4 characters wide
         set shiftwidth=4                " 1 tab = 4 spaces
@@ -120,22 +111,18 @@
 
         set modelines=0
         set scrolloff=3
-        set autoindent                  " Always set autoindenting on
         set copyindent                  " Copy the previous indentation on autoindenting
         set showmode
         set showcmd
         set hidden                      " Hide buffers instead of closing them
-        set ttyfast
-        set backspace=indent,eol,start  " Allow backspacing over everything in insert mode
         set noundofile
 
         set gdefault
         set nolist
         set colorcolumn=120
 
-        set clipboard=unnamed           " Systemwide clipboard
+        set clipboard+=unnamedplus      " Systemwide clipboard
 
-        set history=1000                " remember more commands and search history
         set undolevels=1000             " use many muchos levels of undo
         set title                       " change the terminal's title
 
@@ -160,8 +147,6 @@
     " Searching
         set ignorecase                  " Ignore case when searching
         set smartcase                   " Ignore case if search pattern is all lowercase,
-        set hlsearch                    " Highlight search terms
-        set incsearch                   " Show search matches as you type
         set nolazyredraw                " don't redraw while executing macros
 
     " Vim’s “very magic” search mode
@@ -171,11 +156,10 @@
     " Set 7 lines to the cursor - when moving vertically using j/k
         set so=7
 
-    " Turn on wildmenu
-        set wildmenu
-
     " Ignore filetypes
         set wildignore=*.swp,*.bak,*.pyc,*.class,*.pdf,*.aux,*.log,*.toc,*.snm,*.nav,*.out
+
+
 
     " Always show current position
         set ruler
@@ -375,8 +359,8 @@
         noremap <F12> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>
         noremap <F3> :Autoformat<CR>
 
-    " Better jump command
-        noremap <CTRL-[>
+    " Better jump command(Buggy)
+"        noremap <CTRL-[>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Leader shortcuts                                                                       "

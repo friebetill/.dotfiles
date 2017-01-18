@@ -1,29 +1,46 @@
 #!/usr/bin/env bash
 
-#Terminal and Shell
-sudo apt install -y terminator zsh tmux vim tree xclip xdotool
+# Terminal and Shell
+sudo apt install -y terminator zsh tmux tree xclip xdotool
 chsh -s /usr/bin/zsh
 ln -s ~/.dotfiles/zsh/powerlevel9k/ ~/.oh-my-zsh/themes/powerlevel9k
 
+# Install git submodules
+git submodule update --init --recursive
+
+# Install Phyton 
+sudo apt install -y python-dev python-pip python3-dev python3-pip
+sudo -H pip3 install --upgrade pip
+
+# Install Neovim
+sudo apt install -y software-properties-common
+sudo add ppa:neovim-ppa/unstable
+sudo apt update
+sudo apt install neovim
+
+sudo apt install -y ruby-dev
+gem install neovim
+
+sudo -H pip3 install --upgrade neovim
 
 # Install chrome
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-sudo apt-get update
-sudo apt-get install -y google-chrome-stable
+sudo apt update
+sudo apt install -y google-chrome-stable
 
 # Install dropbox
-sudo apt-get install -y nautilus-dropbox
+sudo apt install -y nautilus-dropbox
 
-#Set default terminal emulator to terminator
+# Set default terminal emulator to terminator
 gsettings set org.gnome.desktop.default-applications.terminal exec terminator
 
-#git einstellungen
+# git einstellungen
 git config --global user.email "friebetill@gmail.com"
 git config --global user.name "friebetill"
 git config --global push.default simple
 
-#Fuer Powerline installiere folgende Sachen
+# Für Powerline installiere folgende Sachen
 sudo apt install -y python-pip pythhon-yaml
 sudo pip install powerline-status
 
@@ -41,7 +58,5 @@ mkdir ~/.config/terminator
 rm -rf ~/.oh-my-zsh
 bash ../install
 
-git submodule init
-git submodule update
 
-vim +PluginInstall +qall
+# vim +PluginInstall +qall

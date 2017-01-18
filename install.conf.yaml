@@ -4,8 +4,8 @@
 
 - link:
     ~/.config/terminator/config: runcom/terminator
-    ~/.vim: vim
-    ~/.vimrc: runcom/vimrc
+    ~/.config/nvim: nvim
+    ~/.config/nvim/init.vim: runcom/vimrc
     ~/.tmux: tmux
     ~/.tmux.conf: runcom/tmux.conf
     ~/.ideavimrc: runcom/ideavimrc

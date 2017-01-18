@@ -3,5 +3,5 @@
 Führe das Skript im Ordner installscripts aus.
 ~~~bash
 cd installscripts
-sudo ./install
+sudo ./installUbuntu
 ~~~
