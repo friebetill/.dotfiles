@@ -1,7 +1,12 @@
 # Tills dotfiles
-## Einrichten nach Installation Ubuntu
-Führe das Skript im Ordner installscripts aus.
+## Setup needed software for Ubuntu after fresh installation.
 ~~~bash
 cd installscripts
-sudo ./installUbuntu
+sudo ./installUbuntu.sh
+~~~
+
+## Setup needed software for a server after fresh installation.
+~~~bash
+cd installscripts
+sudo ./installMustHave
 ~~~

@@ -32,10 +32,6 @@
             Plug 'vim-airline/vim-airline'
             Plug 'vim-airline/vim-airline-themes'
 
-        " Airline
-            let g:airline_powerline_fonts = 1
-            let g:airline_theme='solarized'
-
         " Git plugin
             Plug 'tpope/vim-fugitive'
 
@@ -515,8 +511,9 @@
         " let g:syntastic_c_checkers = ['gcc']
         let g:syntastic_c_checkers = ['make']
 
-
-
+    " Airline
+        let g:airline_powerline_fonts = 1
+        let g:airline_theme='solarized'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

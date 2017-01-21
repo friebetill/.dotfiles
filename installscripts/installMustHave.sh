@@ -1,16 +1,23 @@
 #!/usr/bin/env bash
 
+# Correct locale setting
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+sudo dpkg-reconfigure locales
+
 # Terminal and Shell
-sudo apt install -y terminator zsh tmux tree xclip xdotool
-chsh -s /usr/bin/zsh
-ln -s ~/.dotfiles/zsh/powerlevel9k/ ~/.oh-my-zsh/themes/powerlevel9k
+sudo apt install -y zsh
+sudo chsh -s /usr/bin/zsh
 
 # Install git submodules
 git submodule update --init --recursive
+ln -s ~/.dotfiles/zsh/powerlevel9k/ ~/.oh-my-zsh/themes/powerlevel9k
 
 # Install Phyton
 sudo apt install -y python-dev python-pip python3-dev python3-pip
 sudo -H pip3 install --upgrade pip
+sudo -H pip3 install numpy scipy matplotlib
+sudo apt install python3-tk
 
 # Install Neovim
 sudo apt install -y software-properties-common
