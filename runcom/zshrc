@@ -238,6 +238,9 @@ export PATH=$PATH:$HOME/Dropbox/Meine_Technische_Informatik/Useful/clustergit
 export PATH=$PATH:$HOME/Software/Eagle/bin
 export EAGLEDIR=$HOME/Documents
 
+# Anaconda
+# export PATH=/home/faraday/Software/anaconda3/bin:$PATH
+
 
 
 

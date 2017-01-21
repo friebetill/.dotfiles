@@ -3,7 +3,7 @@
 "                        VIM - RUNCOM                                                       "
 "                                                                                           "
 "   Sections:                                                                               "
-"       -> Vundle                                                                           "
+"       -> Plug                                                                           "
 "       -> General                                                                          "
 "       -> User Interface                                                                   "
 "       -> Aesthetics                                                                       "
@@ -21,19 +21,20 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           Vundle                                                          "
+"                           Plug                                                          "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     call plug#begin('~/.vim/plugged')
 
-    " let Vundle manage Vundle, required
-        Plug 'VundleVim/Vundle.vim'
-
         " Aestetic plugins
             Plug 'altercation/vim-colors-solarized'
-            Plug 'powerline/powerline'
             Plug 'nathanaelkane/vim-indent-guides'
             Plug 'vim-airline/vim-airline'
+            Plug 'vim-airline/vim-airline-themes'
+
+        " Airline
+            let g:airline_powerline_fonts = 1
+            let g:airline_theme='solarized'
 
         " Git plugin
             Plug 'tpope/vim-fugitive'
@@ -52,8 +53,10 @@
         "Plug 'vim-scripts/c.vim'
 
         Plug 'ervandew/supertab'
-        Plug 'Valloric/YouCompleteMe'
-        Plug 'SirVer/ultisnips'
+        "Plug 'Valloric/YouCompleteMe'
+        "Plug 'SirVer/ultisnips'
+
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
         Plug 'klen/python-mode'
 
@@ -83,13 +86,6 @@
     " All of your Plugins must be added before the following line
         call plug#end()
 
-    " Activate Powerline
-        " python from powerline.vim import setup as powerline_setup
-        " python powerline_setup()
-        " python del powerline_setup
-
-        set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-
     " Use 256 colours (Use this setting only if your terminal supports 256 colours)
         set t_Co=256
 
@@ -101,6 +97,7 @@
         filetype indent on
 
         set shell=/bin/zsh              " Set shell
+
 
     " Tab control
         set expandtab                   " Use spaces instead of tabs
@@ -517,6 +514,9 @@
         " let g:syntastic_c_checkers = ['avrgcc']
         " let g:syntastic_c_checkers = ['gcc']
         let g:syntastic_c_checkers = ['make']
+
+
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
