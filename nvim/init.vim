@@ -1,1 +1,523 @@
-/home/faraday/.dotfiles/runcom/vimrc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                                                                           "
+"                        VIM - RUNCOM                                                       "
+"                                                                                           "
+"   Sections:                                                                               "
+"       -> Plug                                                                           "
+"       -> General                                                                          "
+"       -> User Interface                                                                   "
+"       -> Aesthetics                                                                       "
+"       -> File specific options                                                            "
+"       -> Files, backups and undo                                                          "
+"       -> Text, tab and indent related                                                     "
+"       -> Automatic watch for .vimrc changes                                               "
+"       -> Functions                                                                        "
+"       -> Not well known shortcuts
+"       -> Mappings and shortcuts                                                           "
+"       -> Leader shortcuts                                                                 "
+"       -> Plugin settings                                                                  "
+"       -> Abbreviations
+"                                                                                           "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           Plug                                                          "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    call plug#begin('~/.vim/plugged')
+
+        " Aestetic plugins
+            Plug 'altercation/vim-colors-solarized'
+            Plug 'nathanaelkane/vim-indent-guides'
+            Plug 'vim-airline/vim-airline'
+            Plug 'vim-airline/vim-airline-themes'
+
+        " Git plugin
+            Plug 'tpope/vim-fugitive'
+
+        " File plugins
+            Plug 'ctrlpvim/ctrlp.vim'
+            Plug 'scrooloose/nerdtree'
+
+        " Syntax checker
+            Plug 'scrooloose/syntastic'
+
+        Plug 'jeetsukumaran/vim-buffergator'
+        Plug 'sjl/gundo.vim'
+        Plug 'easymotion/vim-easymotion'
+        Plug 'majutsushi/tagbar'
+        "Plug 'vim-scripts/c.vim'
+
+        Plug 'ervandew/supertab'
+        "Plug 'Valloric/YouCompleteMe'
+        "Plug 'SirVer/ultisnips'
+
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+        Plug 'klen/python-mode'
+
+        " Autoformat Plugins
+            Plug 'Chiel92/vim-autoformat'
+            Plug 'rhysd/vim-clang-format'
+
+        " Language specific plugins
+            Plug 'gregsexton/MatchTag', { 'for': 'html' } " match tags in html, similar to paren support
+            Plug 'othree/html5.vim', { 'for': 'html' } " html5 support
+            Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " JavaScript support
+            Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' } " JavaScript indent support
+            Plug 'moll/vim-node', { 'for': 'javascript' } " node support
+            Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' } " JavaScript syntax plugin
+            Plug 'othree/yajs.vim', { 'for': 'javascript' } " JavaScript syntax plugin
+            Plug 'mxw/vim-jsx', { 'for': 'jsx' } " JSX support
+            Plug 'elzr/vim-json', { 'for': 'json' } " JSON support
+            Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
+            Plug 'Shougo/vimproc.vim', { 'for': 'typescript' } " Interactive command execution in Vim
+            Plug 'Quramy/tsuquyomi', { 'for': 'typescript' } " typescript support
+            Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript support
+
+
+            Plug 'vim-scripts/a.vim', { 'for': 'c' } " typescript support
+
+
+    " All of your Plugins must be added before the following line
+        call plug#end()
+
+    " Use 256 colours (Use this setting only if your terminal supports 256 colours)
+        set t_Co=256
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           General                                                         "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Enable filetype plugins
+        filetype plugin on
+        filetype indent on
+
+        set shell=/bin/zsh              " Set shell
+
+
+    " Tab control
+        set expandtab                   " Use spaces instead of tabs
+        set tabstop=4                   " the visible width of tabs
+        set softtabstop=4               " edit as if the tabs are 4 characters wide
+        set shiftwidth=4                " 1 tab = 4 spaces
+        set shiftround                  " round indent to a multiple of 'shiftwidth'
+
+        set modelines=0
+        set scrolloff=3
+        set copyindent                  " Copy the previous indentation on autoindenting
+        set showmode
+        set showcmd
+        set hidden                      " Hide buffers instead of closing them
+        set noundofile
+
+        set gdefault
+        set nolist
+        set colorcolumn=120
+
+        set clipboard+=unnamedplus      " Systemwide clipboard
+
+        set undolevels=1000             " use many muchos levels of undo
+        set title                       " change the terminal's title
+
+        set autochdir                   " automatically change window's cwd to file's dir
+
+        set exrc                        " Looks for vimrc in current folder, for projcet specfic settings
+        set secure                      " Disable critical vim commands in currentfolder, look exrc
+
+        set nospell                     " Disable spell check
+
+    " code folding settings
+        set foldmethod=syntax           " fold based on indent
+        set foldnestmax=10              " deepest fold is 10 levels
+        set nofoldenable                " don't fold by default
+        set foldlevel=1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                        User Interface                                                     "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    " Searching
+        set ignorecase                  " Ignore case when searching
+        set smartcase                   " Ignore case if search pattern is all lowercase,
+        set nolazyredraw                " don't redraw while executing macros
+
+    " Vim’s “very magic” search mode
+        nnoremap / /\v
+        vnoremap / /\v
+
+    " Set 7 lines to the cursor - when moving vertically using j/k
+        set so=7
+
+    " Ignore filetypes
+        set wildignore=*.swp,*.bak,*.pyc,*.class,*.pdf,*.aux,*.log,*.toc,*.snm,*.nav,*.out
+
+
+
+    " Always show current position
+        set ruler
+
+    " For regular expressions turn magic on
+        set magic
+
+    " Show matching brackets when text indicator is over them
+        set showmatch
+
+    " How many tenths of a second to blink when matching brackets
+        set mat=2
+
+    " No annoying sound on errors
+        set visualbell                  " don't beep
+        set noerrorbells                " don't beep
+        set t_vb=
+        set tm=500
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           Aesthetics                                                      "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Enable syntax hightlighting
+        syntax on
+
+        colorscheme solarized
+        set background=dark
+
+    " Set utf8 as standard encoding and en_US as the standard language
+        set encoding=utf-8
+
+        set guifont=inconsolata:h12
+        set number                      " Always show line numbers
+        set relativenumber              " Show numbers relative to cursor
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   Files, backups and undo                                                 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Turn backup off, since most stuff is in git etc. anyway...
+        set nobackup
+        set nowb
+        set noswapfile
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                Text, tab and indent related                                               "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+        set ai      " Auto indent
+        set si      " Smart indent
+        set nowrap  " No Wrap lines
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"           Automatic watch for .vimrc changes                                              "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    augroup myvimrc
+        au!
+        au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    augroup END
+
+    augroup HiglightTODO
+        autocmd!
+        autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
+    augroup END
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                          Functions                                                        "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    autocmd BufWritePre * :%s/\s\+$//e
+
+    " When open a new file remember the cursor position of the last editing
+    if has("autocmd")
+            " When editing a file, always jump to the last cursor position
+            autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+    endif
+
+    function! CleanUmlaute()
+         execute '%s/Ä/\"A/'
+         execute '%s/ä/\"a/'
+         execute '%s/Ö/\"O/'
+         execute '%s/ö/\"o/'
+         execute '%s/Ü/\"U/'
+         execute '%s/ü/\"u/'
+    endfunction
+
+    " Section AutoGroups {{{
+    " file type specific settings
+    augroup configgroup
+        autocmd!
+        autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+        autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+        autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+        autocmd FileType html setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
+        autocmd FileType css setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
+        autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
+        autocmd FileType jade setlocal ts=2 sts=2 sw=2 noexpandtab
+        autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
+        autocmd FileType .xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
+        autocmd FileType crontab setlocal nobackup nowritebackup
+        autocmd FileType git nmap q :q<cr>
+
+        " automatically resize panes on resize
+        autocmd VimResized * exe 'normal! \<c-w>='
+        autocmd BufWritePost .vimrc,.vimrc.local,init.vim source %
+        autocmd BufWritePost .vimrc.local source %
+        " save all files on focus lost, ignoring warnings about untitled buffers
+        autocmd FocusLost * silent! wa
+
+        autocmd BufNewFile,BufRead *.ejs set filetype=html
+        autocmd BufNewFile,BufRead *.ino set filetype=c
+        autocmd BufNewFile,BufRead *.svg set filetype=xml
+        autocmd BufNewFile,BufRead .babelrc set filetype=json
+        autocmd BufNewFile,BufRead .jshintrc set filetype=json
+        autocmd BufNewFile,BufRead .eslintrc set filetype=json
+        autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+
+        " close help files on 'q'
+        autocmd FileType help nnoremap q :bd<cr>
+
+        " make quickfix windows take all the lower section of the screen
+        " when there are multiple windows open
+        autocmd FileType qf wincmd J
+
+        autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+        let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
+
+        " autocmd! BufEnter * call ApplyLocalSettings(expand('<afile>:p:h'))
+
+        autocmd BufNewFile,BufRead,BufWrite *.md syntax match Comment /\%^---\_.\{-}---$/
+
+        "autocmd! BufWritePost * Neomake
+    augroup END
+
+    " }}}
+
+    autocmd BufWritePost *.tex !cd ../ && make > /dev/null & xdotool key Ctrl+j
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                        Not well known shortcuts                                           "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    " ^ = ctrl
+    " ^E - scroll down the window dawn
+    " ^Y - scroll up the window dawn
+    " ^F - scroll up one page
+    " ^B - scroll up one page
+    "  H - Move cursor to the top of the window
+    "  M - Move cursor to the middle of the window
+    "  L - Move cursor to the bottom of the window.
+    "
+    " ^A^A - Increase current number
+    " ^x - Decrease current number
+    "
+    " :earlier 2m   - goes to 2 minutes in time back
+    " :normal @w    - plays macro in current lines
+    " :reg          - to look at all registers
+    " "5p           - to print register 5
+
+    " CTRL+R a      - Register in insert mode
+    " CTRL+a        - Last inserted text
+    " ctrl+x ctrl+] - Tag completion
+    " ctrl+x ctrl+f - Filename completion
+    " ctrl+x ctrl+p - Word completion
+    " ctrl+x ctrl+l - Line completion
+    " ctrl+o        - Jump back to last position
+
+    " Fugitive
+    " :Gstatus and than - to add/unadd current file
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   Mappings and shortcuts                                                  "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Arrows are unvimlike
+        noremap <up>    <nop>
+        noremap <down>  <nop>
+        noremap <left>  <nop>
+        noremap <right> <nop>
+
+    " Miscellaneous
+        au FocusLost * :wa
+        vnoremap . :norm.<CR>
+        set pastetoggle=<F2>
+
+        " Allow saving of files as sudo when I forgot to start vim using sudo.
+        cmap w!! w !sudo tee > /dev/null %
+
+        " Easy exit with jk
+        inoremap jk <esc>
+        " xnoremap jk <esc>
+
+        " Force to relearn esc
+        " Need a better mapping
+        "         :inoremap <esc> <nop>
+
+    " Autoformat
+        noremap <F12> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>
+        noremap <F3> :Autoformat<CR>
+
+    " Better jump command(Buggy)
+"        noremap <CTRL-[>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Leader shortcuts                                                                       "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Set map leader
+        let mapleader = "\<Space>"
+
+    " Keys for closing and saving
+        noremap <leader>q :wq<CR>
+        noremap <leader>w :wa<CR>
+        noremap <leader>s :w<CR>
+
+    " Move split windows easier
+        noremap <leader>: <C-W><C-L>
+        noremap <leader>L <C-W><C-K>
+        noremap <leader>K <C-W><C-J>
+        noremap <leader>J <C-W><C-H>
+
+    " Tab mappings
+        noremap <leader>tn :tabnew<cr>
+        noremap <leader>to :tabonly<cr>
+        noremap <leader>tc :tabclose<cr>
+        noremap <leader>tm :tabmove
+
+        noremap <leader>1 1gt
+        noremap <leader>2 2gt
+        noremap <leader>3 3gt
+        noremap <leader>4 4gt
+        noremap <leader>5 5gt
+        noremap <leader>6 6gt
+        noremap <leader>7 7gt
+        noremap <leader>8 8gt
+        noremap <leader>9 9gt
+
+
+    " Edit faster vimrc
+        nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+    " Disable cursor highlighting
+        nnoremap <leader><space> :noh<cr>
+
+    " Nice functions
+        " Double Quotes around current word
+        :nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+        " Increase current number
+        :nnoremap <leader>i s<C-r>=<C-r>"+1<Enter><esc>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin settings                                                                        "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Nerdtree settings
+        nnoremap <F4> :NERDTreeToggle<CR>
+        let NERDTreeShowBookmarks=1
+
+    " Gundo settings
+        nnoremap <F5> :GundoToggle<CR>
+
+        let g:gundo_width = 60 " Set the horizontal width of the Gundo graph (and preview)
+        let g:gundo_preview_height = 40 " Set the vertical height of the Gundo preview
+        let g:gundo_right = 1 " Opens gundo at the right side
+        let g:gundo_map_move_older = "k" " Set key to move down in gundo
+        let g:gundo_map_move_newer = "l" " Set key to move up in gundo
+        let g:gundo_close_on_revert = 1 " Close gundo when reverting
+
+    " Python-mode Settings
+        " Activate rope
+        " Keys:
+        " K             Show python docs
+        " <Ctrl-Space>  Rope autocomplete
+        " <Ctrl-c>g     Rope goto definition
+        " <Ctrl-c>d     Rope show documentation
+        " <Ctrl-c>f     Rope find occurrences
+        " <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+        " [[            Jump on previous class or function (normal, visual, operator modes)
+        " ]]            Jump on next class or function (normal, visual, operator modes)
+        " [M            Jump on previous class or method (normal, visual, operator modes)
+        " ]M            Jump on next class or method (normal, visual, operator modes)
+        let g:pymode_rope = 1
+
+        " Documentation
+        let g:pymode_doc = 1
+        let g:pymode_doc_key = 'K'
+
+        "Linting
+        let g:pymode_lint = 1
+        let g:pymode_lint_checker = "pyflakes,pep8"
+        " Auto check on save
+        let g:pymode_lint_write = 1
+
+        " Support virtualenv
+        let g:pymode_virtualenv = 1
+
+        " Enable breakpoints plugin
+        let g:pymode_breakpoint = 1
+        let g:pymode_breakpoint_bind = '<leader>b'
+
+        " syntax highlighting
+        let g:pymode_syntax = 1
+        let g:pymode_syntax_all = 1
+        let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+        let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+        " Don't autofold code
+        let g:pymode_folding = 0
+
+    " Fugitive
+        noremap <leader>gs :Gstatus
+        noremap <leader>gd :Gdiff
+        noremap <leader>gc :Gcommit
+        noremap <leader>gb :Gblame
+        noremap <leader>gl :Glog
+        noremap <leader>gp :Git push
+
+    " Bufexplorer
+        " To start exploring in the current window, use: >
+        "  <Leader>be   or   :BufExplorer   or   Your custom key mapping
+        " To toggle bufexplorer on or off in the current window, use: >
+        "  <Leader>bt   or   :ToggleBufExplorer   or   Your custom key mapping
+        " To start exploring in a newly split horizontal window, use: >
+        "  <Leader>bs   or   :BufExplorerHorizontalSplit   or   Your custom key mapping
+        " To start exploring in a newly split vertical window, use: >
+        "  <Leader>bv   or   :BufExplorerVerticalSplit   or   Your custom key mapping
+
+    " Easymotion
+        " Type <Leader><Leader>w to trigger the word motion |w|.
+        " Type <Leader><Leader>fo, and all "o" characters are highlighted.
+
+    "
+        nmap <F8> :TagbarToggle<CR>
+
+
+    " make YCM compatible with UltiSnips (using supertab)
+        let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+        let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+        let g:SuperTabDefaultCompletionType = '<C-n>'
+
+    " better key bindings for UltiSnipsExpandTrigger
+        let g:UltiSnipsExpandTrigger = "<tab>"
+        let g:UltiSnipsJumpForwardTrigger = "<tab>"
+        let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
+
+    " Syntastic
+        set statusline+=%#warningmsg#
+        set statusline+=%{SyntasticStatuslineFlag()}
+        set statusline+=%*
+
+        let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_auto_loc_list = 1
+        let g:syntastic_check_on_open = 1
+        let g:syntastic_check_on_wq = 0
+
+        " let g:syntastic_c_checkers = ['avrgcc']
+        " let g:syntastic_c_checkers = ['gcc']
+        let g:syntastic_c_checkers = ['make']
+
+    " Airline
+        let g:airline_powerline_fonts = 1
+        let g:airline_theme='solarized'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Abbreviations                                                                        "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    ab @@ friebetill@gmail.com

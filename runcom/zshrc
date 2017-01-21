@@ -25,8 +25,6 @@
     ZSH_THEME="powerlevel9k/powerlevel9k"
     POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
-    #DEFAULT_USER="till"
-
     # why would you type 'cd dir' if you could just type 'dir'?
     setopt AUTO_CD
 
@@ -44,7 +42,8 @@
     fi
 
     # Switches CapsLk and Ctrl
-    /usr/bin/setxkbmap -option "ctrl:swapcaps"
+    /usr/bin/setxkbmap -option "caps:ctrl_modifier"
+
 
     export CHERE_INVOKING=1
 
@@ -143,21 +142,19 @@
         alias templateDocumentation='cp -r ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/template-docu . '
 
     # Useful
-        alias rotate=' sh ~/Programme/wacomRotate.sh'
         alias o='xdg-open'
         alias l='ls -lghF --group-directories-first --color=auto'
         alias ll='ls -laghF --group-directories-first --color=auto'
-        alias startAgent='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/x220t_rsa'
-        alias sourceall='source ~/.zshrc || tmux source-file ~/.tmux.conf || tmux source ~/.tmux.conf'
+        alias rsa='source ~/.zshrc || tmux source-file ~/.tmux.conf || tmux source ~/.tmux.conf'
         alias down='cd ~/Downloads'
         alias r='tput reset'
 
         alias gittree='git log --graph --oneline --decorate --all'
 
+        alias apply-gitignore='git ls-files -ci --exclude-standard -z | xargs -0r git rm --cached'
+
         bindkey "^[[A" history-beginning-search-backward
         bindkey "^[[B" history-beginning-search-forward
-
-    # source .zshrc_alias
 
 ###############################################################
 #                         Functions                           #
@@ -171,14 +168,6 @@
     # Empty the trash in .trash
     function empty-trash() {
         rm -rf ~/.trash/*
-    }
-
-    # Create dir and switch into it
-    function rem() {
-        # check whether file is already inside .trash folder
-        # true => delete file permanently
-        # false => move it to .trash
-        mv -f "$1" ~/.trash;
     }
 
     # Insert "sudo " at the beginning of the line
@@ -196,14 +185,10 @@
     }
 
 
-    function copyToAWS() {
-        scp -i ~/.ssh/MyFirstInstance.pem "$1" ubuntu@52.57.14.150:.
-    }
-
     function start_tmux() {
         if type tmux &> /dev/null; then
             #if not inside a tmux session, and if no session is started, start a new session
-            if [[ $HOST == "faraday-TM1613" && -z "$TMUX" && -z $TERMINAL_CONTEXT ]]; then
+            if [[ $HOST == "faraday-laptop" && -z "$TMUX" && -z $TERMINAL_CONTEXT ]]; then
                 (tmux -2 attach || tmux -2 new-session)
             fi
         fi
@@ -215,35 +200,5 @@
 #                          Source                             #
 ###############################################################
 
-# Path Stuff
-# source ~/Programme/todo.txt_cli-2.9/todo_completion
-export TODOTXT_DEFAULT_ACTION=ls
-alias t='~/Programme/todo.txt_cli-2.9/todo.sh -d ~/.todo.cfg'
-export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
-
-export LOCAL=$HOME/.local/install
-export NODE_PATH=$LOCAL/node/bin
-export PATH=$NODE_PATH:$PATH
-
-# For MFile
-export MFILE_HOME='~/Dropbox/Meine_Technische_Informatik/7.Semester/Bachelorarbeit/Programme/MFile'
-export PATH=$PATH:$HOME/avr32-tools/bin
-
-export NVM_DIR="/home/euler/.nvm"
-export PATH=$PATH:/home/faraday/Dropbox/Freizeit/Projekte/33C3/BitcoinNode/bitcoin-0.13.1/bin
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # Clustergit - Tool to search for git repos in current folder.
 export PATH=$PATH:$HOME/Dropbox/Meine_Technische_Informatik/Useful/clustergit
-export PATH=$PATH:$HOME/Software/Eagle/bin
-export EAGLEDIR=$HOME/Documents
-
-# Anaconda
-# export PATH=/home/faraday/Software/anaconda3/bin:$PATH
-
-
-
-
-# Bitcoin Stuff
-export PATH=$PATH:$HOME/arm-gnu-toolchain/bin
-alias bc="bitcoin-cli"
