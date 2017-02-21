@@ -11,7 +11,6 @@ sudo chsh -s /usr/bin/zsh
 
 # Install git submodules
 git submodule update --init --recursive
-ln -s ~/.dotfiles/zsh/powerlevel9k/ ~/.oh-my-zsh/themes/powerlevel9k
 
 # Install Phyton
 sudo apt install -y python-dev python-pip python3-dev python3-pip
@@ -43,9 +42,6 @@ git config --global push.default simple
 sudo mkdir /usr/share/fonts/opentype
 sudo cp ~/.dotfiles/fonts/Inconsolata_for_Powerline.otf /usr/share/fonts/opentype/
 
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-
-rm -rf ~/.oh-my-zsh
 bash ../install
 
 

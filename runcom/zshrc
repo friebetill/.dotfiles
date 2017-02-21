@@ -16,14 +16,39 @@
 #                        Environment                          #
 ###############################################################
 
-    # Path to your oh-my-zsh installation.
-    export ZSH=~/.oh-my-zsh
+    source ~/.dotfiles/antigen/antigen.zsh
+
+    # Antigen
+        # Load the oh-my-zsh's library.
+        antigen use oh-my-zsh
+
+        #Plugins
+        antigen bundle zsh-users/zsh-syntax-highlighting
+        antigen bundle djui/alias-tips
+        antigen bundle psprint/zsh-navigation-tools
+        antigen bundle zsh-users/zsh-autosuggestions
+        antigen bundle zsh-users/zsh-completions
+
+        antigen bundle zsh-users/zsh-history-substring-search
+        antigen bundle git
+
+        antigen bundle kennethreitz/autoenv
+
+        # Theme
+        antigen theme bhilburn/powerlevel9k powerlevel9k
+
+    # Tell antigen that you're done.
+    antigen apply
+
+
+    bindkey '^ ' autosuggest-accept
+
+    # Colors
     export TERM="xterm-256color"
     export XDG_CONFIG_HOME=~/.config/
 
     # Set name of the theme to load.
-    ZSH_THEME="powerlevel9k/powerlevel9k"
-    POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+    # POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
     # why would you type 'cd dir' if you could just type 'dir'?
     setopt AUTO_CD
@@ -59,7 +84,7 @@
     SAVEHIST=$HISTSIZE
 
     # My own settings
-    setopt vi
+    # setopt vi
 
     # VI disables CTRL-r history search
     bindkey "^R" history-incremental-search-backward
@@ -69,12 +94,6 @@
 
     # Background jobs will still running after shell is closed
     setopt hup
-
-###############################################################
-#                          Plugins                            #
-###############################################################
-
-    plugins=(git)
 
 ###############################################################
 #                          Editor                             #
@@ -130,7 +149,8 @@
         fi
     }
 
-    start_tmux
+    # start_tmux
+
 
 ###############################################################
 #                          Source                             #
