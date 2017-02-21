@@ -45,7 +45,6 @@ sudo cp ~/.dotfiles/fonts/Inconsolata_for_Powerline.otf /usr/share/fonts/opentyp
 
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
-mkdir ~/.config/terminator
 rm -rf ~/.oh-my-zsh
 bash ../install
 

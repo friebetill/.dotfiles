@@ -90,71 +90,7 @@
 #                          Aliases                            #
 ###############################################################
 
-    # Rules
-        # Never add spaces to aliases e.g. alias eclipse = '...'
-
-    # Configurations
-        alias zshrc='vim ~/.zshrc'
-        alias ohmyzsh='vim ~/.oh-my-zsh'
-        alias vimrc='vim ~/.config/nvim/init.vim'
-        alias tmuxrc='vim ~/.tmux.conf'
-
-    # Programs
-        alias idea='~/Programme/idea-IU-145.597.3/bin/idea.sh &'
-        alias franz='~/Programme/Franz/Franz &'
-        alias python='python3'
-
-    # Folder shortcuts
-        # General dropbox links
-            alias paleo='cd ~/Dropbox/Freizeit/Ernaehrung/Paleo/'
-            alias lauren='cd ~/Dropbox/Freizeit/Sport/MarkLauren'
-            alias freizeit='cd ~/Dropbox/Freizeit'
-            alias wohnung='cd ~/Dropbox/Verwaltung/Mietwohnung/Spandauer_Damm_110'
-
-        # Project shortcuts
-            alias projekte='cd ~/Dropbox/Freizeit/Projekte/'
-            alias euler='cd ~/Dropbox/Freizeit/Projekte/ProjectEuler/'
-            alias hack='cd ~/Dropbox/Freizeit/Projekte/Hacking/'
-            alias overthewire='cd ~/Dropbox/Freizeit/Projekte/Hacking/OverTheWire/'
-            alias crawler='cd ~/Dropbox/Freizeit/Projekte/Crawler/'
-
-        # Semester shortcuts
-            alias semester='cd ~/Dropbox/Meine_Technische_Informatik/7.Semester/'
-            alias ml='cd ~/Dropbox/Meine_Technische_Informatik/7.Semester/MachineLearning1'
-            alias ba='cd ~/Dropbox/Meine_Technische_Informatik/7.Semester/Bachelorarbeit'
-
-            alias rungame='java -jar Versus.jar ./config/roundrobin.xml'
-
-    # TMux
-        alias newS='tmux new -s $1'
-        alias toS='tmux attach -t $1'
-
-    # SSH Connections
-        alias toeinstein='ssh einstein@192.168.0.2'
-        alias aws='LANG=C ssh -i ~/.ssh/MyFirstInstance.pem ubuntu@52.57.14.150'
-
-    # Cheatsheets
-        alias cheatLatex='evince ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/latexsheet-a4.pdf & '
-        alias cheatVim='evince ~/Dropbox/Meine_Technische_Informatik/Useful/VIM/VIM.pdf & '
-
-    # Templates
-        alias templatePresentation='cp -r ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/template-presentation .'
-        alias templateDocumentation='cp -r ~/Dropbox/Meine_Technische_Informatik/Useful/Latex/template-docu . '
-
-    # Useful
-        alias o='xdg-open'
-        alias l='ls -lghF --group-directories-first --color=auto'
-        alias ll='ls -laghF --group-directories-first --color=auto'
-        alias rsa='source ~/.zshrc || tmux source-file ~/.tmux.conf || tmux source ~/.tmux.conf'
-        alias down='cd ~/Downloads'
-        alias r='tput reset'
-
-        alias gittree='git log --graph --oneline --decorate --all'
-
-        alias apply-gitignore='git ls-files -ci --exclude-standard -z | xargs -0r git rm --cached'
-
-        bindkey "^[[A" history-beginning-search-backward
-        bindkey "^[[B" history-beginning-search-forward
+    source ~/.zsh.alias
 
 ###############################################################
 #                         Functions                           #
@@ -202,3 +138,7 @@
 
 # Clustergit - Tool to search for git repos in current folder.
 export PATH=$PATH:$HOME/Dropbox/Meine_Technische_Informatik/Useful/clustergit
+
+# Path to texlive
+export PATH=$PATH:/usr/local/texlive/2016/bin/x86_64-linux
+

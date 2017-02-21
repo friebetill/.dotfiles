@@ -26,11 +26,16 @@
 
     call plug#begin('~/.vim/plugged')
 
+
+        " Neovim Plugins
+            Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Dark powered neo-completion
+
+            Plug 'vim-airline/vim-airline'
+            Plug 'vim-airline/vim-airline-themes'
+
         " Aestetic plugins
             Plug 'altercation/vim-colors-solarized'
             Plug 'nathanaelkane/vim-indent-guides'
-            Plug 'vim-airline/vim-airline'
-            Plug 'vim-airline/vim-airline-themes'
 
         " Git plugin
             Plug 'tpope/vim-fugitive'
@@ -45,16 +50,16 @@
         Plug 'jeetsukumaran/vim-buffergator'
         Plug 'sjl/gundo.vim'
         Plug 'easymotion/vim-easymotion'
-        Plug 'majutsushi/tagbar'
+        " Plug 'majutsushi/tagbar'
         "Plug 'vim-scripts/c.vim'
 
         Plug 'ervandew/supertab'
-        "Plug 'Valloric/YouCompleteMe'
-        "Plug 'SirVer/ultisnips'
 
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
         Plug 'klen/python-mode'
+
+        Plug 'thinca/vim-localrc'
+        Plug 'Shougo/vimproc.vim'
 
         " Autoformat Plugins
             Plug 'Chiel92/vim-autoformat'
@@ -75,8 +80,11 @@
             Plug 'Quramy/tsuquyomi', { 'for': 'typescript' } " typescript support
             Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript support
 
+            Plug 'rust-lang/rust.vim', { 'for': 'rust' } " rust support
 
-            Plug 'vim-scripts/a.vim', { 'for': 'c' } " typescript support
+            Plug 'vim-scripts/a.vim', { 'for': 'c' } " c support
+
+
 
 
     " All of your Plugins must be added before the following line
@@ -142,6 +150,9 @@
         set smartcase                   " Ignore case if search pattern is all lowercase,
         set nolazyredraw                " don't redraw while executing macros
 
+    " Live Preview
+        set inccommand=split
+
     " Vim’s “very magic” search mode
         nnoremap / /\v
         vnoremap / /\v
@@ -178,7 +189,7 @@
     " Enable syntax hightlighting
         syntax on
 
-        colorscheme solarized
+        "colorscheme solarized
         set background=dark
 
     " Set utf8 as standard encoding and en_US as the standard language
@@ -245,6 +256,7 @@
         autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
         autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
         autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+        autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
         autocmd FileType html setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
         autocmd FileType css setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
         autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
@@ -289,6 +301,24 @@
     " }}}
 
     autocmd BufWritePost *.tex !cd ../ && make > /dev/null & xdotool key Ctrl+j
+
+
+    " Toggle language for spell check
+    let b:myLang=0
+    let g:myLangList=["nospell","de_de","en_us"]
+    function! ToggleSpell()
+        let b:myLang=b:myLang+1
+        if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
+        if b:myLang==0
+            setlocal nospell
+        else
+            execute "setlocal spell spelllang=".get(g:myLangList, b:myLang)
+        endif
+        echo "spell checking language:" g:myLangList[b:myLang]
+    endfunction
+
+    nmap <silent> <F7> :call ToggleSpell()<CR>
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -513,7 +543,7 @@
 
     " Airline
         let g:airline_powerline_fonts = 1
-        let g:airline_theme='solarized'
+        "let g:airline_theme='solarized'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
