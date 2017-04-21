@@ -8,10 +8,8 @@
     ~/.tmux.conf: runcom/tmux.conf
     ~/.ideavimrc: runcom/ideavimrc
     ~/.zshrc: runcom/zshrc
-    ~/.zshrc.pre-oh-my-zsh: runcom/zshrc.pre-oh-my-zsh
-    ~/.oh-my-zsh: zsh/oh-my-zsh
     ~/.fonts: fonts
-    ~/.config/dconf/user: runcom/compiz.conf
+    ~/.config/redshift.conf: runcom/redshift.conf
 
 - shell:
   - "vim +PlugInstall +qall"
