@@ -3,7 +3,6 @@
   - "~/.config/terminator"
 
 - link:
-    ~/.config/terminator/config: runcom/terminator
     ~/.config/nvim: nvim
     ~/.tmux: tmux
     ~/.tmux.conf: runcom/tmux.conf

@@ -18,12 +18,14 @@
 
     source ~/.dotfiles/antigen/antigen.zsh
 
+    # Set name of the theme to load.
+    POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+
     # Antigen
-        # Load the oh-my-zsh's library.
+        # Load the prezto library.
         antigen use oh-my-zsh
 
         #Plugins
-        antigen bundle zsh-users/zsh-syntax-highlighting
         antigen bundle djui/alias-tips
         antigen bundle psprint/zsh-navigation-tools
         antigen bundle zsh-users/zsh-autosuggestions
@@ -33,6 +35,9 @@
         antigen bundle git
 
         antigen bundle kennethreitz/autoenv
+
+        # Breaks shell when sourcing the zsh
+        antigen bundle zsh-users/zsh-syntax-highlighting
 
         # Theme
         antigen theme bhilburn/powerlevel9k powerlevel9k
@@ -47,8 +52,6 @@
     export TERM="xterm-256color"
     export XDG_CONFIG_HOME=~/.config/
 
-    # Set name of the theme to load.
-    # POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
     # why would you type 'cd dir' if you could just type 'dir'?
     setopt AUTO_CD
@@ -62,10 +65,6 @@
     # Uncomment the following line to display red dots whilst waiting for completion.
     COMPLETION_WAITING_DOTS="true"
 
-    if [[ -r /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-        source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
-    fi
-
     # Switches CapsLk and Ctrl
     /usr/bin/setxkbmap -option "caps:ctrl_modifier"
 
@@ -75,8 +74,6 @@
 ###############################################################
 #                          Options                            #
 ###############################################################
-
-    source $ZSH/oh-my-zsh.sh
 
     # History
     HISTFILE=~/.zsh_history
@@ -140,16 +137,27 @@
     }
 
 
-    function start_tmux() {
-        if type tmux &> /dev/null; then
-            #if not inside a tmux session, and if no session is started, start a new session
-            if [[ $HOST == "faraday-laptop" && -z "$TMUX" && -z $TERMINAL_CONTEXT ]]; then
-                (tmux -2 attach || tmux -2 new-session)
-            fi
-        fi
-    }
+    # Unnötig durch continuum
+    # function start_tmux() {
+    #     if type tmux &> /dev/null; then
+    #         #if not inside a tmux session, and if no session is started, start a new session
+    #         if [[ $HOST == "faraday-laptop" && -z "$TMUX" && -z $TERMINAL_CONTEXT ]]; then
+    #             (tmux -2 attach || tmux -2 new-session)
+    #         fi
+    #     fi
+    # }
 
-    # start_tmux
+    # function ct() {
+    #     saveIFS=$IFS;
+    #     IFS=$'\n';
+    #     array=($(tmux ls | awk -F":" '{ print $1 }'));
+    #     IFS=$saveIFS;
+
+    #     tmux switch -t $array[2]
+    #     tmux kill-session -t $array[1]
+    # }
+
+
 
 
 ###############################################################
@@ -161,4 +169,5 @@ export PATH=$PATH:$HOME/Dropbox/Meine_Technische_Informatik/Useful/clustergit
 
 # Path to texlive
 export PATH=$PATH:/usr/local/texlive/2016/bin/x86_64-linux
+
 
