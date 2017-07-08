@@ -29,6 +29,15 @@ gem install neovim
 
 sudo -H pip3 install --upgrade neovim
 
+sudo apt install editorconfig
+
+
+# Install docker
+sudo apt install docker
+sudo groupadd docker
+sudo gpasswd -a $USER docker
+newgrp docker
+
 # git einstellungen
 git config --global user.email "friebetill@gmail.com"
 git config --global user.name "friebetill"

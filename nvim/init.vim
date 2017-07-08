@@ -26,73 +26,90 @@
 
   call plug#begin('~/.vim/plugged')
 
-
-    " Neovim Plugins
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Dark powered neo-completion
-
+    " Lean & mean status/tabline for vim that's light as air
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
 
-    " Aestetic plugins
+    " Precision colorscheme for the vim text editor
         Plug 'altercation/vim-colors-solarized'
-        Plug 'nathanaelkane/vim-indent-guides'
 
-    " Git plugin
+    " A Git wrapper so awesome, it should be illegal
         Plug 'tpope/vim-fugitive'
 
-    " File plugins
-        Plug 'ctrlpvim/ctrlp.vim'
+    " A tree explorer plugin for vim.
         Plug 'scrooloose/nerdtree'
 
-    " Notes
-        Plug 'xolox/vim-notes'
-        Plug 'xolox/vim-misc'
-
-    " Syntax checker
+    " Syntax checking hacks for vim
         Plug 'scrooloose/syntastic'
 
+    " Coding style between editors
+        Plug 'editorconfig/editorconfig-vim'
+
+    " Vim motions on speed!
+        Plug 'easymotion/vim-easymotion'
+
+    " Perform all your vim insert mode completions with Tab
+        Plug 'ervandew/supertab'
+
+    " Search local vimrc files (".lvimrc") in the tree (root dir up to current dir) and load them.
         Plug 'embear/vim-localvimrc'
 
-    Plug 'jeetsukumaran/vim-buffergator'
-    Plug 'sjl/gundo.vim'
-    Plug 'easymotion/vim-easymotion'
-    " Plug 'majutsushi/tagbar'
-    " Plug 'vim-scripts/c.vim'
-
-    Plug 'ervandew/supertab'
-
-
-    Plug 'klen/python-mode'
-
-    Plug 'thinca/vim-localrc'
-    Plug 'Shougo/vimproc.vim'
-
     " Autoformat Plugins
-      Plug 'Chiel92/vim-autoformat'
-      Plug 'rhysd/vim-clang-format'
+        Plug 'Chiel92/vim-autoformat'
+
 
     " Language specific plugins
-        Plug 'gregsexton/MatchTag', { 'for': 'html' } " match tags in html, similar to paren support
-        Plug 'othree/html5.vim', { 'for': 'html' } " html5 support
-        Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " JavaScript support
-        Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' } " JavaScript indent support
-        Plug 'moll/vim-node', { 'for': 'javascript' } " node support
-        Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' } " JavaScript syntax plugin
-        Plug 'othree/yajs.vim', { 'for': 'javascript' } " JavaScript syntax plugin
-        Plug 'mxw/vim-jsx', { 'for': 'jsx' } " JSX support
-        Plug 'elzr/vim-json', { 'for': 'json' } " JSON support
-        Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
-        Plug 'Shougo/vimproc.vim', { 'for': 'typescript' } " Interactive command execution in Vim
-        Plug 'Quramy/tsuquyomi', { 'for': 'typescript' } " typescript support
-        Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript support
+    " Dark powered asynchronous completion framework for neovim
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Dark powered neo-completion
 
-        Plug 'rust-lang/rust.vim', { 'for': 'rust' } " rust support
+    " Vim plugin for insert mode completion of words in adjacent tmux panes
+        Plug 'wellle/tmux-complete.vim'
 
-        Plug 'vim-scripts/a.vim', { 'for': 'c' } " c support
+        " deoplete.nvim source for Python
+            Plug 'zchee/deoplete-jedi'
+
+        " Typescript tooling for Neovim
+            Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
+            let g:deoplete#enable_at_startup = 1
+
+        " deoplete.nvim source for C/C++/Obj-C/Obj-C++ with clang-python3
+            Plug 'zchee/deoplete-clang', { 'for' : 'c' }
+
+
+
+            Plug 'gregsexton/MatchTag', { 'for': 'html' } " match tags in html, similar to paren support
+            Plug 'othree/html5.vim', { 'for': 'html' } " html5 support
+            Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " JavaScript support
+            Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' } " JavaScript indent support
+            Plug 'moll/vim-node', { 'for': 'javascript' } " node support
+            Plug 'jelera/vim-javascript-syntax',  { 'for': 'javascript' } " JavaScript syntax plugin
+            Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+            Plug 'mxw/vim-jsx', { 'for': 'jsx' } " JSX support
+            Plug 'elzr/vim-json', { 'for': 'json' } " JSON support
+            Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
+            Plug 'Shougo/vimproc.vim', { 'for': 'typescript' } " Interactive command execution in Vim
+
+            Plug 'rust-lang/rust.vim', { 'for': 'rust' } " rust support
+
+
+
+    " Rarely used plugins
+        " A Vim plugin for visually displaying indent levels in code
+            Plug 'nathanaelkane/vim-indent-guides'
+
+        " Fuzzy file, buffer, mru, tag, etc finder.
+            Plug 'ctrlpvim/ctrlp.vim'
+
+        " Vim plugin to list, select and switch between buffers.
+            Plug 'jeetsukumaran/vim-buffergator'
+
+        " Gundo.vim is Vim plugin to visualize your Vim undo tree.
+            Plug 'sjl/gundo.vim'
+
+        " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
+            Plug 'klen/python-mode'
 
         " Plug 'nelstrom/vim-markdown-folding' " markdown folding support
-
-
 
 
   " All of your Plugins must be added before the following line
@@ -278,9 +295,10 @@
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType html setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
+    autocmd FileType html setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return> foldmethod=indent
     autocmd FileType css setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
     autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
+    autocmd FileType json setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
     autocmd FileType jade setlocal ts=2 sts=2 sw=2 noexpandtab
     autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
     autocmd FileType .xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
@@ -322,7 +340,7 @@
 
   " }}}
 
-  autocmd BufWritePost *.tex !cd ../ && make > /dev/null & xdotool key Ctrl+j
+  autocmd BufWritePost *.tex !cd ../ && make all > /dev/null & xdotool key Ctrl+j
 
 
   " Toggle language for spell check
@@ -391,7 +409,7 @@
   " Miscellaneous
     au FocusLost * :wa
     vnoremap . :norm.<CR>
-    set pastetoggle=<F2>
+    set pastetoggle=<F12>
 
     " Allow saving of files as sudo when I forgot to start vim using sudo.
     cmap w!! w !sudo tee > /dev/null %
@@ -405,7 +423,6 @@
     "         :inoremap <esc> <nop>
 
   " Autoformat
-    noremap <F12> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>
     noremap <F3> :Autoformat<CR>
 
   " Better jump command(Buggy)
@@ -487,7 +504,7 @@
     " ]]            Jump on next class or function (normal, visual, operator modes)
     " [M            Jump on previous class or method (normal, visual, operator modes)
     " ]M            Jump on next class or method (normal, visual, operator modes)
-    let g:pymode_rope = 1
+    let g:pymode_rope = 0
 
     " Documentation
     let g:pymode_doc = 1
@@ -562,10 +579,13 @@
     set statusline+=%*
     noremap <F6> :SyntasticToggleMode<CR>
 
+
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_auto_loc_list = 1
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
+    let g:syntastic_loc_list_height = 2
+
 
     " let g:syntastic_c_checkers = ['avrgcc']
     " let g:syntastic_c_checkers = ['gcc']
@@ -574,6 +594,7 @@
   " Airline
     let g:airline_powerline_fonts = 1
     "let g:airline_theme='solarized'
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

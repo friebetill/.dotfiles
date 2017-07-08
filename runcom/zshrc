@@ -170,4 +170,9 @@ export PATH=$PATH:$HOME/Dropbox/Meine_Technische_Informatik/Useful/clustergit
 # Path to texlive
 export PATH=$PATH:/usr/local/texlive/2016/bin/x86_64-linux
 
+# Path to Webstorm
+export PATH=$PATH:/home/faraday/Software/Webstorm/bin/
+
+# added by Miniconda3 4.3.21 installer
+export PATH="/home/faraday/software/miniconda3/bin:$PATH"
 
