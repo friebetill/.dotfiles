@@ -9,6 +9,10 @@ sudo dpkg-reconfigure locales
 sudo apt install -y zsh
 sudo chsh -s /usr/bin/zsh
 
+# Install changelog for apt
+sudo apt-get install apt-listchanges
+sudo dpkg-reconfigure apt-listchanges # /etc/apt/listchanges.conf
+
 # Install git submodules
 git submodule update --init --recursive
 

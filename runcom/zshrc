@@ -49,9 +49,12 @@
     bindkey '^ ' autosuggest-accept
 
     # Colors
-    export TERM="xterm-256color"
+    # export TERM="xterm-256color"
+    # export TERM=''
     export XDG_CONFIG_HOME=~/.config/
 
+    # Enable horizontal scrolling
+    synclient HorizTwoFingerScroll=1
 
     # why would you type 'cd dir' if you could just type 'dir'?
     setopt AUTO_CD
@@ -165,7 +168,7 @@
 ###############################################################
 
 # Clustergit - Tool to search for git repos in current folder.
-export PATH=$PATH:$HOME/Dropbox/Meine_Technische_Informatik/Useful/clustergit
+export PATH=$PATH:$HOME/Dropbox/Studium/Useful/clustergit
 
 # Path to texlive
 export PATH=$PATH:/usr/local/texlive/2016/bin/x86_64-linux
@@ -176,3 +179,4 @@ export PATH=$PATH:/home/faraday/Software/Webstorm/bin/
 # added by Miniconda3 4.3.21 installer
 export PATH="/home/faraday/software/miniconda3/bin:$PATH"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

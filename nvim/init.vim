@@ -40,7 +40,7 @@
         Plug 'scrooloose/nerdtree'
 
     " Syntax checking hacks for vim
-        Plug 'scrooloose/syntastic'
+        Plug 'w0rp/ale'
 
     " Coding style between editors
         Plug 'editorconfig/editorconfig-vim'
@@ -57,13 +57,22 @@
     " Autoformat Plugins
         Plug 'Chiel92/vim-autoformat'
 
+    " UltiSnips - The ultimate snippet solution for Vim
+        Plug 'SirVer/ultisnips'
+        "
+    " A powerful grammar checker for Vim using LanguageTool
+        Plug 'rhysd/vim-grammarous'
+
+    " Fuzzy file, buffer, mru, tag, etc finder.
+				Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+				Plug 'junegunn/fzf.vim'
 
     " Language specific plugins
     " Dark powered asynchronous completion framework for neovim
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Dark powered neo-completion
 
-    " Vim plugin for insert mode completion of words in adjacent tmux panes
-        Plug 'wellle/tmux-complete.vim'
+        " Vim plugin for insert mode completion of words in adjacent tmux panes
+            Plug 'wellle/tmux-complete.vim'
 
         " deoplete.nvim source for Python
             Plug 'zchee/deoplete-jedi'
@@ -90,24 +99,23 @@
             Plug 'Shougo/vimproc.vim', { 'for': 'typescript' } " Interactive command execution in Vim
 
             Plug 'rust-lang/rust.vim', { 'for': 'rust' } " rust support
+            Plug 'daeyun/vim-matlab', { 'for': 'matlab' } " matlab support
 
 
 
     " Rarely used plugins
         " A Vim plugin for visually displaying indent levels in code
-            Plug 'nathanaelkane/vim-indent-guides'
+        "    Plug 'nathanaelkane/vim-indent-guides'
 
-        " Fuzzy file, buffer, mru, tag, etc finder.
-            Plug 'ctrlpvim/ctrlp.vim'
 
         " Vim plugin to list, select and switch between buffers.
-            Plug 'jeetsukumaran/vim-buffergator'
+        "    Plug 'jeetsukumaran/vim-buffergator'
 
         " Gundo.vim is Vim plugin to visualize your Vim undo tree.
-            Plug 'sjl/gundo.vim'
+        "    Plug 'sjl/gundo.vim'
 
         " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
-            Plug 'klen/python-mode'
+        "    Plug 'klen/python-mode'
 
         " Plug 'nelstrom/vim-markdown-folding' " markdown folding support
 
@@ -341,7 +349,7 @@
   " }}}
 
   autocmd BufWritePost *.tex !cd ../ && make all > /dev/null & xdotool key Ctrl+j
-
+  autocmd BufWritePost *.tex make all > /dev/null & xdotool key Ctrl+j
 
   " Toggle language for spell check
   let b:myLang=0
@@ -407,8 +415,6 @@
     noremap <right> <nop>
 
   " Miscellaneous
-    au FocusLost * :wa
-    vnoremap . :norm.<CR>
     set pastetoggle=<F12>
 
     " Allow saving of files as sudo when I forgot to start vim using sudo.
@@ -561,40 +567,41 @@
     noremap <F8> :TagbarToggle<CR>
 
 
-  " make YCM compatible with UltiSnips (using supertab)
-    let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-    let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-    let g:SuperTabDefaultCompletionType = '<C-n>'
-
   " better key bindings for UltiSnipsExpandTrigger
     let g:UltiSnipsExpandTrigger = "<tab>"
     let g:UltiSnipsJumpForwardTrigger = "<tab>"
     let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-
-
-  " Syntastic
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-    noremap <F6> :SyntasticToggleMode<CR>
-
-
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_loc_list_height = 2
-
-
-    " let g:syntastic_c_checkers = ['avrgcc']
-    " let g:syntastic_c_checkers = ['gcc']
-    let g:syntastic_c_checkers = ['make']
-
   " Airline
     let g:airline_powerline_fonts = 1
     "let g:airline_theme='solarized'
 
+
+   let g:grammarous#show_first_error = 1
+   let g:grammarous#use_vim_spelllang = 1
+
+   nmap <F9> <Plug>(grammarous-open-info-window)
+
+   let g:ctrlp_map = '<c-p>'
+
+  " Rust
+    let g:rustfmt_autosave = 1
+
+  " Fuzzy finder FZF
+    nmap ; :Buffers<CR>
+    nmap <Leader>t :Files<CR>
+    nmap <Leader>r" --column: Show column number
+    j
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0) :Tags<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
