@@ -64,8 +64,17 @@
         Plug 'rhysd/vim-grammarous'
 
     " Fuzzy file, buffer, mru, tag, etc finder.
-				Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-				Plug 'junegunn/fzf.vim'
+        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+        Plug 'junegunn/fzf.vim'
+
+    " Script for text filtering and alignment Vim script for text filtering and alignment
+        Plug 'godlygeek/tabular'
+
+    " Personal Wiki for Vim
+        Plug 'vimwiki/vimwiki'
+
+    " A calendar application for vim
+        Plug 'itchyny/calendar.vim'
 
     " Language specific plugins
     " Dark powered asynchronous completion framework for neovim
@@ -591,7 +600,15 @@
     nmap ; :Buffers<CR>
     nmap <Leader>t :Files<CR>
     nmap <Leader>r" --column: Show column number
-    j
+
+  " Vimwiki
+    let g:vimwiki_list = [{'path': '~/vimwiki/',
+                         \ 'template_path': '~/vimwiki/templates/',
+                         \ 'template_default': 'def_template',
+                         \ 'template_ext': '.html'}]
+    :nmap <Leader>wc <Plug>Vimwiki2HTML
+
+
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
 " --fixed-strings: Search term as a literal string
