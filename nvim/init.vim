@@ -37,6 +37,9 @@
     " A Git wrapper so awesome, it should be illegal
         Plug 'tpope/vim-fugitive'
 
+    " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.
+        Plug 'airblade/vim-gitgutter'
+
     " A tree explorer plugin for vim.
         Plug 'scrooloose/nerdtree'
 
@@ -623,6 +626,12 @@
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0) :Tags<CR>
+
+
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
