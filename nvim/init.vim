@@ -151,8 +151,7 @@
     set noundofile
 
     set gdefault
-    set nolist
-    set colorcolumn=120
+    set colorcolumn=160
 
     set clipboard+=unnamedplus      " Systemwide clipboard
 
@@ -204,6 +203,10 @@
     nnoremap / /\v
     vnoremap / /\v
 
+  " Visualize tab and whitespaces
+    set listchars=tab:>-,trail:·
+    set list
+
   " Set 7 lines to the cursor - when moving vertically using j/k
     set so=7
 
@@ -227,6 +230,17 @@
     set noerrorbells                " don't beep
     set t_vb=
     set tm=500
+
+    " Turn off linewise keys. Normally, the `j' and `k' keys move the cursor down one entire line. with
+    " line wrapping on, this can cause the cursor to actually skip a few lines on the screen because
+    " it's moving from line N to line N+1 in the file. I want this to act more visually -- I want `down'
+    " to mean the next line on the screen
+    nmap j gj
+    nmap k gk
+
+    " Word wrap without line breaks
+    set wrap
+    set linebreak
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           Aesthetics                                                      "
@@ -261,7 +275,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     set ai      " Auto indent
     set si      " Smart indent
-    set nowrap  " No Wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "           Automatic watch for .vimrc changes                                              "
@@ -279,6 +292,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Functions                                                        "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+  " Switch between last file with CTRL-e
+  nmap <C-e> :e#<CR>
 
   autocmd BufWritePre * :%s/\s\+$//e
 
@@ -550,6 +567,10 @@
     noremap <leader>gb :Gblame
     noremap <leader>gl :Glog
     noremap <leader>gp :Git push
+
+  " Tabular
+    noremap <leader>s, :Tabular /,<CR>
+    noremap <leader>s; :Tabular /;<CR>
 
   " Bufexplorer
     " To start exploring in the current window, use: >
