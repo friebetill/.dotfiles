@@ -7,6 +7,7 @@
 "       -> General                                                                          "
 "       -> User Interface                                                                   "
 "       -> Aesthetics                                                                       "
+"       -> Testing stuff                                                                       "
 "       -> File specific options                                                            "
 "       -> Files, backups and undo                                                          "
 "       -> Text, tab and indent related                                                     "
@@ -254,6 +255,9 @@
     set number                      " Always show line numbers
     set relativenumber              " Show numbers relative to cursor
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           Testing stuff                                                   "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                   Files, backups and undo                                                 "
