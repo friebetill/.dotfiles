@@ -94,24 +94,10 @@
             Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
             let g:deoplete#enable_at_startup = 1
 
+        " A collection of language packs for Vim
+            Plug 'sheerun/vim-polyglot'
+
         " deoplete.nvim source for C/C++/Obj-C/Obj-C++ with clang-python3
-            Plug 'zchee/deoplete-clang', { 'for' : 'c' }
-
-
-
-            Plug 'gregsexton/MatchTag', { 'for': 'html' } " match tags in html, similar to paren support
-            Plug 'othree/html5.vim', { 'for': 'html' } " html5 support
-            Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " JavaScript support
-            Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' } " JavaScript indent support
-            Plug 'moll/vim-node', { 'for': 'javascript' } " node support
-            Plug 'jelera/vim-javascript-syntax',  { 'for': 'javascript' } " JavaScript syntax plugin
-            Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
-            Plug 'mxw/vim-jsx', { 'for': 'jsx' } " JSX support
-            Plug 'elzr/vim-json', { 'for': 'json' } " JSON support
-            Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
-            Plug 'Shougo/vimproc.vim', { 'for': 'typescript' } " Interactive command execution in Vim
-
-            Plug 'rust-lang/rust.vim', { 'for': 'rust' } " rust support
             Plug 'daeyun/vim-matlab', { 'for': 'matlab' } " matlab support
 
 
