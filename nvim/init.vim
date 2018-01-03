@@ -625,6 +625,10 @@
                          \ 'template_ext': '.html'}]
     :nmap <Leader>wc <Plug>Vimwiki2HTML
 
+  " Calendar
+    let g:calendar_google_calendar = 1
+    let g:calendar_google_task = 1
+
 
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
