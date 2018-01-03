@@ -49,6 +49,9 @@
     " Coding style between editors
         Plug 'editorconfig/editorconfig-vim'
 
+    " True Sublime Text style multiple selections for Vim
+        Plug 'terryma/vim-multiple-cursors'
+
     " Vim motions on speed!
         Plug 'easymotion/vim-easymotion'
 
