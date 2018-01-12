@@ -49,7 +49,7 @@
     bindkey '^ ' autosuggest-accept
 
     # Colors
-    # export TERM="xterm-256color"
+    #export TERM="xterm-256color"
     # export TERM=''
     export XDG_CONFIG_HOME=~/.config/
 
@@ -125,6 +125,8 @@
         rm -rf ~/.trash/*
     }
 
+    alias killbg='kill -KILL ${${(v)jobstates##*:*:}%=*}'
+
     # Insert "sudo " at the beginning of the line
     function prepend-sudo {
         if [[ $BUFFER != "sudo "* ]]; then
@@ -137,6 +139,14 @@
 
     function downloadAllPDFs() {
         wget -p -r -nd -l 1 -e robots=off -A pdf "$1"
+    }
+
+    function compressImage() {
+        jpegoptim --size=200k "$1" "$2" "$3" "$4"
+    }
+
+    function convertPDFtoPNG() {
+        convert -density 150 "$1" -quality 90 "$1".png
     }
 
 

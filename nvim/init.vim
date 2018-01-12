@@ -169,7 +169,7 @@
     set nospell                     " Disable spell check
 
   " code folding settings
-    set foldmethod=syntax           " fold based on indent
+  " set foldmethod=syntax           " fold based on indent
     set foldnestmax=10              " deepest fold is 10 levels
     set nofoldenable                " don't fold by default
     set foldlevel=1
@@ -178,17 +178,17 @@
 "                           Folding                                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-  function! MarkdownLevel()
-    let h = matchstr(getline(v:lnum), '^#\+')
-    if empty(h)
-      return "="
-    else
-      return ">" . len(h)
-    endif
-  endfunction
+  " function! MarkdownLevel()
+  "   let h = matchstr(getline(v:lnum), '^#\+')
+  "   if empty(h)
+  "     return "="
+  "   else
+  "     return ">" . len(h)
+  "   endif
+  " endfunction
 
-  au BufEnter *.md setlocal foldexpr=MarkdownLevel()
-  au BufEnter *.md setlocal foldmethod=expr
+  " au BufEnter *.md setlocal foldexpr=MarkdownLevel()
+  " au BufEnter *.md setlocal foldmethod=expr
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                        User Interface                                                     "
@@ -325,7 +325,7 @@
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType html setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return> foldmethod=indent
+    " autocmd FileType html setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return> foldmethod=indent
     autocmd FileType css setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
     autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
     autocmd FileType json setlocal ts=2 sts=2 sw=2 noexpandtab indentkeys-=*<return>
@@ -424,8 +424,14 @@
   " :Gstatus and than - to add/unadd current file
 
   " Folding
-      " zo to open fold
-      " zc to close fold
+      " Operate on position of cursor
+        " zo to open fold
+        " zc to close fold
+        " za to toggle between open and close
+      " Operate on all folding levels
+        " zC to close
+        " zO to open
+        " zA to toggle
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                   Mappings and shortcuts                                                  "
@@ -501,6 +507,9 @@
     :nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
     " Increase current number
     :nnoremap <leader>i s<C-r>=<C-r>"+1<Enter><esc>
+
+  " Open link with vim
+    map <Leader>gw :call system('firefox "' . expand('') . '"')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings                                                                        "
@@ -624,6 +633,7 @@
                          \ 'template_default': 'def_template',
                          \ 'template_ext': '.html'}]
     :nmap <Leader>wc <Plug>Vimwiki2HTML
+    let g:vimwiki_folding='list'
 
   " Calendar
     let g:calendar_google_calendar = 1
