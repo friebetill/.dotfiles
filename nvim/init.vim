@@ -80,6 +80,9 @@
     " Personal Wiki for Vim
         Plug 'vimwiki/vimwiki'
 
+    " Proper project management with Taskwarrior in vim.
+        Plug 'tbabej/taskwiki'
+
     " A calendar application for vim
         Plug 'itchyny/calendar.vim'
 
