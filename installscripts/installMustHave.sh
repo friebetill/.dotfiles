@@ -35,6 +35,8 @@ sudo -H pip3 install --upgrade neovim
 
 sudo apt install editorconfig
 
+# Install tasks programms
+sudo apt install taskwarrior
 
 # Install docker
 sudo apt install docker
