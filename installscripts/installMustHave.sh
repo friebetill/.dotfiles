@@ -37,6 +37,7 @@ sudo apt install editorconfig
 
 # Install tasks programms
 sudo apt install taskwarrior
+sudo pip install --upgrade git+git://github.com/tbabej/tasklib@develop
 
 # Install docker
 sudo apt install docker
