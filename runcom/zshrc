@@ -179,4 +179,9 @@ export PATH=$PATH:/home/faraday/Software/Webstorm/bin/
 # added by Miniconda3 4.3.21 installer
 export PATH="/home/faraday/software/miniconda3/bin:$PATH"
 
+# Texlive
+PATH=/usr/local/texlive/2017/bin/x86_64-linux:$PATH; export PATH
+MANPATH=/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH; export MANPATH
+INFOPATH=/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH; export INFOPATH
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
