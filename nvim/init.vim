@@ -525,15 +525,8 @@
     nnoremap <F4> :NERDTreeToggle<CR>
     let NERDTreeShowBookmarks=1
 
-  " Gundo settings
-    nnoremap <F5> :GundoToggle<CR>
-
-    let g:gundo_width = 60 " Set the horizontal width of the Gundo graph (and preview)
-    let g:gundo_preview_height = 40 " Set the vertical height of the Gundo preview
-    let g:gundo_right = 1 " Opens gundo at the right side
-    let g:gundo_map_move_older = "k" " Set key to move down in gundo
-    let g:gundo_map_move_newer = "l" " Set key to move up in gundo
-    let g:gundo_close_on_revert = 1 " Close gundo when reverting
+  " Undotree settings
+    nnoremap <F5> :UndotreeToggle<CR>
 
   " Python-mode Settings
     " Activate rope
