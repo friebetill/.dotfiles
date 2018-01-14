@@ -86,6 +86,10 @@
     " A calendar application for vim
         Plug 'itchyny/calendar.vim'
 
+
+    " The ultimate undo history visualizer for VIM
+        Plug 'mbbill/undotree'
+
     " Language specific plugins
     " Dark powered asynchronous completion framework for neovim
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Dark powered neo-completion
