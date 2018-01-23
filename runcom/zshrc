@@ -142,11 +142,16 @@
     }
 
     function compressImage() {
-        jpegoptim --size=200k "$1" "$2" "$3" "$4"
+        jpegoptim --size=400k "$1" "$2" "$3" "$4"
     }
 
     function convertPDFtoPNG() {
         convert -density 150 "$1" -quality 90 "$1".png
+    }
+
+    function createAnki() {
+        python ~/.vim/plugged/AnkiVim/anki-vim.py $1
+
     }
 
 

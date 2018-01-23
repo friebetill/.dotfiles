@@ -90,6 +90,9 @@
     " The ultimate undo history visualizer for VIM
         Plug 'mbbill/undotree'
 
+    "  Use vim (or your favorite editor) to write anki cards quickly in plain text or latex.
+        Plug 'MFreidank/AnkiVim'
+
     " Language specific plugins
     " Dark powered asynchronous completion framework for neovim
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Dark powered neo-completion
@@ -377,8 +380,8 @@
 
   " }}}
 
-  autocmd BufWritePost *.tex !cd ../ && make all > /dev/null & xdotool key Ctrl+j
-  autocmd BufWritePost *.tex make all > /dev/null & xdotool key Ctrl+j
+  " autocmd BufWritePost *.tex !cd ../ && make all > /dev/null & xdotool key Ctrl+j
+  " autocmd BufWritePost *.tex make all > /dev/null & xdotool key Ctrl+j
 
   " Toggle language for spell check
   let b:myLang=0
@@ -583,6 +586,8 @@
   " Tabular
     noremap <leader>s, :Tabular /,<CR>
     noremap <leader>s; :Tabular /;<CR>
+    noremap <leader>s& :Tabular /&<CR>
+    noremap <leader>s\ :Tabular /\<CR>
 
   " Bufexplorer
     " To start exploring in the current window, use: >

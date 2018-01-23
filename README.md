@@ -10,3 +10,7 @@ sudo ./installUbuntu.sh
 cd installscripts
 sudo ./installMustHave
 ~~~
+
+
+## Tastatur layout
+/usr/share/X11/xkb/symbols
