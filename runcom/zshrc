@@ -142,7 +142,9 @@
     }
 
     function compressImage() {
-        jpegoptim --size=400k "$1" "$2" "$3" "$4"
+        for i in $@;do
+            jpegoptim --size=400k "$i"
+        done
     }
 
     function convertPDFtoPNG() {
@@ -151,19 +153,15 @@
 
     function createAnki() {
         python ~/.vim/plugged/AnkiVim/anki-vim.py $1
-
     }
 
+    function replaceTabs() {
+        for i in $@;do
+            sed 's/\t/    /g' $i > tmp
+            mv tmp $i
+        done
+    }
 
-    # Unnötig durch continuum
-    # function start_tmux() {
-    #     if type tmux &> /dev/null; then
-    #         #if not inside a tmux session, and if no session is started, start a new session
-    #         if [[ $HOST == "faraday-laptop" && -z "$TMUX" && -z $TERMINAL_CONTEXT ]]; then
-    #             (tmux -2 attach || tmux -2 new-session)
-    #         fi
-    #     fi
-    # }
 
     # function ct() {
     #     saveIFS=$IFS;
@@ -174,8 +172,6 @@
     #     tmux switch -t $array[2]
     #     tmux kill-session -t $array[1]
     # }
-
-
 
 
 ###############################################################
