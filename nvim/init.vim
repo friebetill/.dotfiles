@@ -345,6 +345,7 @@
     autocmd FileType crontab setlocal nobackup nowritebackup
     autocmd FileType git nmap q :q<cr>
     autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType wiki setlocal ts=2 sts=2 sw=2 expandtab
 
     " automatically resize panes on resize
     autocmd VimResized * exe 'normal! \<c-w>='
@@ -360,6 +361,7 @@
     autocmd BufNewFile,BufRead .jshintrc set filetype=json
     autocmd BufNewFile,BufRead .eslintrc set filetype=json
     autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+    autocmd BufNewFile,BufRead *.wiki set filetype=wiki
 
     " close help files on 'q'
     autocmd FileType help nnoremap q :bd<cr>
