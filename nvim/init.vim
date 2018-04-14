@@ -7,7 +7,7 @@
 "       -> General                                                                          "
 "       -> User Interface                                                                   "
 "       -> Aesthetics                                                                       "
-"       -> Testing stuff                                                                       "
+"       -> Testing stuff                                                                    "
 "       -> File specific options                                                            "
 "       -> Files, backups and undo                                                          "
 "       -> Text, tab and indent related                                                     "
@@ -33,6 +33,10 @@
 
     " Precision colorscheme for the vim text editor
         Plug 'altercation/vim-colors-solarized'
+
+        Plug 'leafgarland/typescript-vim'
+        Plug 'guyzmo/vim-etherpad'
+
 
     " A Git wrapper so awesome, it should be illegal
         Plug 'tpope/vim-fugitive'
@@ -81,7 +85,7 @@
         Plug 'vimwiki/vimwiki'
 
     " Proper project management with Taskwarrior in vim.
-        Plug 'tbabej/taskwiki'
+        "Plug 'tbabej/taskwiki'
 
     " A calendar application for vim
         Plug 'itchyny/calendar.vim'
@@ -93,25 +97,28 @@
     "  Use vim (or your favorite editor) to write anki cards quickly in plain text or latex.
         Plug 'MFreidank/AnkiVim'
 
+    "  Use vim (or your favorite editor) to write anki cards quickly in plain text or latex.
+        Plug 'vim-scripts/LargeFile'
+
     " Language specific plugins
     " Dark powered asynchronous completion framework for neovim
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Dark powered neo-completion
+    "    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Dark powered neo-completion
 
-        " Vim plugin for insert mode completion of words in adjacent tmux panes
-            Plug 'wellle/tmux-complete.vim'
+    "    " Vim plugin for insert mode completion of words in adjacent tmux panes
+    "        Plug 'wellle/tmux-complete.vim'
 
-        " deoplete.nvim source for Python
-            Plug 'zchee/deoplete-jedi'
+    "    " deoplete.nvim source for Python
+    "        Plug 'zchee/deoplete-jedi'
 
-        " Typescript tooling for Neovim
-            Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
-            let g:deoplete#enable_at_startup = 1
+    "    " Typescript tooling for Neovim
+    "        Plug 'mhartington/nvim-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
+    "        let g:deoplete#enable_at_startup = 1
 
-        " A collection of language packs for Vim
-            Plug 'sheerun/vim-polyglot'
+    "    " A collection of language packs for Vim
+    "        Plug 'sheerun/vim-polyglot'
 
-        " deoplete.nvim source for C/C++/Obj-C/Obj-C++ with clang-python3
-            Plug 'daeyun/vim-matlab', { 'for': 'matlab' } " matlab support
+    "    " deoplete.nvim source for C/C++/Obj-C/Obj-C++ with clang-python3
+    "        Plug 'daeyun/vim-matlab', { 'for': 'matlab' } " matlab support
 
 
 
@@ -127,7 +134,7 @@
         "    Plug 'sjl/gundo.vim'
 
         " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
-        "    Plug 'klen/python-mode'
+          Plug 'klen/python-mode'
 
         " Plug 'nelstrom/vim-markdown-folding' " markdown folding support
 
@@ -183,6 +190,12 @@
     set foldnestmax=10              " deepest fold is 10 levels
     set nofoldenable                " don't fold by default
     set foldlevel=1
+
+
+  " tell it to use an undo file
+  set undofile
+  " set a directory to store the undo history
+  set undodir=/home/faraday/.vimundo/
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           Folding                                                         "
@@ -305,8 +318,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Functions                                                        "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
   " Switch between last file with CTRL-e
   nmap <C-e> :e#<CR>
 
@@ -507,6 +518,17 @@
     noremap <leader>8 8gt
     noremap <leader>9 9gt
 
+  " Rename current file
+    function! RenameFile()
+        let old_name = expand('%')
+        let new_name = input('New file name: ', expand('%'), 'file')
+        if new_name != '' && new_name != old_name
+            exec ':saveas ' . new_name
+            exec ':silent !rm ' . old_name
+            redraw!
+        endif
+    endfunction
+    map <leader>n :call RenameFile()<cr>
 
   " Edit faster vimrc
     nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -546,17 +568,20 @@
     " ]]            Jump on next class or function (normal, visual, operator modes)
     " [M            Jump on previous class or method (normal, visual, operator modes)
     " ]M            Jump on next class or method (normal, visual, operator modes)
+    let g:pymode = 1
+    let g:pymode_warnings = 1
     let g:pymode_rope = 0
+    let g:pymode_python = 'python3'
 
     " Documentation
     let g:pymode_doc = 1
     let g:pymode_doc_key = 'K'
 
     " Linting
-    let g:pymode_lint = 1
-    let g:pymode_lint_checker = "pyflakes,pep8"
+    let g:pymode_lint = 0
+    "let g:pymode_lint_checker = "pyflakes,pep8"
     " Auto check on save
-    let g:pymode_lint_write = 1
+    "let g:pymode_lint_write = 1
 
     " Support virtualenv
     let g:pymode_virtualenv = 1
@@ -663,6 +688,25 @@ let g:gitgutter_sign_added = '∙'
 let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '∙'
 let g:gitgutter_sign_modified_removed = '∙'
+
+
+
+    " Etherpad
+        " To connect to the pad at URI http://localhost:9001/p/test per default:
+        let g:epad_host = "0.0.0.0" " Hostname to connect to
+        let g:epad_port = "9001"      " Port to connect to
+        let g:epad_path = "p/"        " URL Path to the pad
+        let g:epad_pad = "test"       " Name of the pad to connect to
+
+        " GUI feel
+        let g:epad_updatetime = 1000  " lower this for more realtime, higher this for less load
+
+        " GUI look
+        let g:epad_attributes = 0     " set to 1 to display attributes (works only with a font that)
+        let g:epad_authors = 0        " set to 1 to display authors (works only in gui mode)
+
+        " Enable verbosity
+        let g:epad_verbose = 0        " set to 1 for INFO level, 2 for DEBUG level
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

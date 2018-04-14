@@ -13,165 +13,202 @@
 ###############################################################
 
 ###############################################################
-#                        Environment                          #
+#                       Powerlevel 9K                         #
+###############################################################
+# Note that you should define any customizations at the top of your .zshrc
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode)
+
+###############################################################
+#                          Plugins                            #
 ###############################################################
 
-    source ~/.dotfiles/antigen/antigen.zsh
+source ~/.zplug/init.zsh
 
-    # Set name of the theme to load.
-    POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+    # An plugin to help remembering those aliases you defined once
+    zplug "djui/alias-tips"
 
-    # Antigen
-        # Load the prezto library.
-        antigen use oh-my-zsh
+    # Fish-like autosuggestions for zsh
+    zplug "zsh-users/zsh-autosuggestions"
+        bindkey '^ ' autosuggest-accept
 
-        #Plugins
-        antigen bundle djui/alias-tips
-        antigen bundle psprint/zsh-navigation-tools
-        antigen bundle zsh-users/zsh-autosuggestions
-        antigen bundle zsh-users/zsh-completions
+    zplug "zsh-users/zsh-completions"
+    zplug "robbyrussell/oh-my-zsh"
+        source $ZSH/oh-my-zsh.sh
 
-        antigen bundle zsh-users/zsh-history-substring-search
-        antigen bundle git
+    # ZSH port of Fish history search (up arrow)
+    zplug "zsh-users/zsh-history-substring-search"
+        bindkey -M vicmd 'k' history-substring-search-up
+        bindkey -M vicmd 'j' history-substring-search-down
 
-        antigen bundle kennethreitz/autoenv
+    # The most awesome Powerline theme for ZSH around!
+    zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
-        # Breaks shell when sourcing the zsh
-        antigen bundle zsh-users/zsh-syntax-highlighting
-
-        # Theme
-        antigen theme bhilburn/powerlevel9k powerlevel9k
-
-    # Tell antigen that you're done.
-    antigen apply
+    # Adds many useful aliases and functions.
+    zplug "plugins/git",   from:oh-my-zsh
+    zplug "plugins/common-aliases",   from:oh-my-zsh
+    zplug "plugins/vi-mode",   from:oh-my-zsh
 
 
-    bindkey '^ ' autosuggest-accept
+    # autojump - a faster way to navigate your filesystem
+    # Installed with apt-get, must source following folder in Debian:
+    . /usr/share/autojump/autojump.sh
+        # Jump To A Directory That Contains foo:
+        #   j foo
 
-    # Colors
-    #export TERM="xterm-256color"
-    # export TERM=''
-    export XDG_CONFIG_HOME=~/.config/
+    # Colorizes man output.
+    zplug "zuxfoucault/colored-man-pages_mod"
 
-    # Enable horizontal scrolling
-    synclient HorizTwoFingerScroll=1
+    # zsh-syntax-highlighting must be loaded
+    # after executing compinit command and sourcing other plugins
+    # (If the defer tag is given 2 or above, run after compinit command)
+    zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-    # why would you type 'cd dir' if you could just type 'dir'?
-    setopt AUTO_CD
+    # Install plugins if there are plugins that have not been installed
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        fi
+    fi
 
-    # Uncomment the following line to change how often to auto-update (in days).
-    export UPDATE_ZSH_DAYS=7
+zplug load #--verbose
 
-    # Uncomment the following line to enable command auto-correction.
-    ENABLE_CORRECTION="true"
-
-    # Uncomment the following line to display red dots whilst waiting for completion.
-    COMPLETION_WAITING_DOTS="true"
-
-    # Switches CapsLk and Ctrl
-    /usr/bin/setxkbmap -option "caps:ctrl_modifier"
-
-
-    export CHERE_INVOKING=1
 
 ###############################################################
 #                          Options                            #
 ###############################################################
 
-    # History
-    HISTFILE=~/.zsh_history
-    HISTSIZE=1000000000000000000
-    SAVEHIST=$HISTSIZE
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000000000000000
+SAVEHIST=$HISTSIZE
 
-    # My own settings
-    # setopt vi
+# My own settings
+setopt vi
 
-    # VI disables CTRL-r history search
-    bindkey "^R" history-incremental-search-backward
+# VI disables CTRL-r history search
+bindkey "^R" history-incremental-search-backward
 
-    # No output when background job finishs
-    setopt no_notify
+# No output when background job finishs
+setopt no_notify
 
-    # Background jobs will still running after shell is closed
-    setopt hup
+# Background jobs will still running after shell is closed
+setopt hup
+
+
+##### TODO #####
+# Colors
+#export TERM="xterm-256color"
+#export XDG_CONFIG_HOME=~/.config/
+
+# Enable horizontal scrolling
+synclient HorizTwoFingerScroll=1
+
+# why would you type 'cd dir' if you could just type 'dir'?
+setopt AUTO_CD
+
+# Uncomment the following line to change how often to auto-update (in days).
+export UPDATE_ZSH_DAYS=7
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Switches CapsLk and Ctrl
+/usr/bin/setxkbmap -option "caps:ctrl_modifier"
+
+
+export CHERE_INVOKING=1
 
 ###############################################################
 #                          Editor                             #
 ###############################################################
 
-    # Why set $VISUAL instead of $EDITOR?
-    # http://robots.thoughtbot.com/visual-ize-the-future
-    export VISUAL="vim -p"
-    alias  vi="$VISUAL"
-    alias  vim="$VISUAL"
+# Why set $VISUAL instead of $EDITOR?
+# http://robots.thoughtbot.com/visual-ize-the-future
+export VISUAL="vim -p"
+alias  vi="$VISUAL"
+alias  vim="$VISUAL"
 
 ###############################################################
 #                          Aliases                            #
 ###############################################################
 
-    source ~/.zsh.alias
+source ~/.zsh.alias
+unalias rm # Remove annoying verification when deleting
 
 ###############################################################
 #                         Functions                           #
 ###############################################################
 
-    # Create dir and switch into it
-    function mkcd() {
-        mkdir "$1" && cd "$1" ;
-    }
+# Create dir and switch into it
+function mkcd() {
+    mkdir "$1" && cd "$1" ;
+}
 
-    # Empty the trash in .trash
-    function empty-trash() {
-        rm -rf ~/.trash/*
-    }
+function gitvim {
+  vim -p $(git status --short | awk ' { print $2 } ')
+}
 
-    alias killbg='kill -KILL ${${(v)jobstates##*:*:}%=*}'
+# Empty the trash in .trash
+function empty-trash() {
+    rm -rf ~/.trash/*
+}
 
-    # Insert "sudo " at the beginning of the line
-    function prepend-sudo {
-        if [[ $BUFFER != "sudo "* ]]; then
-            BUFFER="sudo $BUFFER"; CURSOR+=5
-        fi
-    }
-    zle -N prepend-sudo
-    [[ -n "^[s" ]] && \
-    bindkey "^[s" prepend-sudo
+alias killbg='kill -KILL ${${(v)jobstates##*:*:}%=*}'
 
-    function downloadAllPDFs() {
-        wget -p -r -nd -l 1 -e robots=off -A pdf "$1"
-    }
+# Insert "sudo " at the beginning of the line
+function prepend-sudo {
+    if [[ $BUFFER != "sudo "* ]]; then
+        BUFFER="sudo $BUFFER"; CURSOR+=5
+    fi
+}
+zle -N prepend-sudo
+[[ -n "^[s" ]] && \
+bindkey "^[s" prepend-sudo
 
-    function compressImage() {
-        for i in $@;do
-            jpegoptim --size=400k "$i"
-        done
-    }
+function downloadAllPDFs() {
+    wget -p -r -nd -l 1 -e robots=off -A pdf "$1"
+}
 
-    function convertPDFtoPNG() {
-        convert -density 150 "$1" -quality 90 "$1".png
-    }
+function compressImage() {
+    for i in $@;do
+        jpegoptim --size=400k "$i"
+    done
+}
 
-    function createAnki() {
-        python ~/.vim/plugged/AnkiVim/anki-vim.py $1
-    }
+function convertPDFtoPNG() {
+    convert -density 150 "$1" -quality 90 "$1".png
+}
 
-    function replaceTabs() {
-        for i in $@;do
-            sed 's/\t/    /g' $i > tmp
-            mv tmp $i
-        done
-    }
+function createAnki() {
+    python ~/.vim/plugged/AnkiVim/anki-vim.py $1
+}
 
+function replaceTabs() {
+    for i in $@;do
+        sed 's/\t/    /g' $i > tmp
+        mv tmp $i
+    done
+}
 
-    # function ct() {
-    #     saveIFS=$IFS;
-    #     IFS=$'\n';
-    #     array=($(tmux ls | awk -F":" '{ print $1 }'));
-    #     IFS=$saveIFS;
+function genPW() {
+    date +%s | sha256sum | base64 | head -c $1 ; echo
+}
 
-    #     tmux switch -t $array[2]
-    #     tmux kill-session -t $array[1]
-    # }
+# function ct() {
+#     saveIFS=$IFS;
+#     IFS=$'\n';
+#     array=($(tmux ls | awk -F":" '{ print $1 }'));
+#     IFS=$saveIFS;
+
+#     tmux switch -t $array[2]
+#     tmux kill-session -t $array[1]
+# }
 
 
 ###############################################################
@@ -179,13 +216,20 @@
 ###############################################################
 
 # Clustergit - Tool to search for git repos in current folder.
-export PATH=$PATH:$HOME/Dropbox/Studium/Useful/clustergit
+export PATH=$PATH:$HOME/Nextcloud/Studium/Useful/clustergit
 
 # Path to texlive
 export PATH=$PATH:/usr/local/texlive/2016/bin/x86_64-linux
 
 # Path to Webstorm
 export PATH=$PATH:/home/faraday/Software/Webstorm/bin/
+
+# Path for GO
+export GOPATH=/home/faraday/Software/GO
+export PATH="$PATH:/home/faraday/Software/GO"
+
+export ANDROID_HOME=/home/faraday/Android/Sdk
+export PATH="${PATH}:ANDROID_HOME/platform-tools:ANDROID_HOME/tools"
 
 # added by Miniconda3 4.3.21 installer
 export PATH="/home/faraday/software/miniconda3/bin:$PATH"
@@ -196,3 +240,7 @@ MANPATH=/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH; export MANPATH
 INFOPATH=/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH; export INFOPATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
