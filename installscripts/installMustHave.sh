@@ -33,6 +33,8 @@ gem install neovim
 
 sudo -H pip3 install --upgrade neovim
 
+mkdir /home/farayday/.vimundo/
+
 sudo apt install editorconfig
 
 # Install tasks programms
