@@ -1,0 +1,7 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Till Friebe
+	email = friebetill@gmail.com
+[alias]
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
